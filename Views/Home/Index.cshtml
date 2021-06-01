@@ -1,0 +1,451 @@
+﻿@model Rootobject
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="text-center">
+        <h1>Total coronavirus cases:</h1>
+        <h1>@Model.overall.confirmed.total</h1>
+        @if (Model.overall.confirmed.last >= Model.overall.recovered.last)
+        {
+            <div class="fixed-statistics btn btn-lg btn-danger text-dark shadow-lg">
+                <h1>@Model.overall.confirmed.last</h1>
+                <h3>New cases</h3>
+            </div>
+        }
+        else
+        {
+            <div class="fixed-statistics btn btn-lg btn-success text-light shadow-lg">
+                <h1>@Model.overall.confirmed.last</h1>
+                <h3>New cases</h3>
+            </div>
+        }
+
+    </div>
+    <section id="map">
+        <div class="container text-center">
+            <svg id="svgmap" viewBox="0 190 612 420">
+                <g id="paths">
+                    <a href="/Home/RegionData?id=4"><path class="svgpath" region_id="4" d="M292.7,273.1l7.1,4.9l4.1,0.7l7.7-2.5l2.4,7.4l-2.2,4.5l-2.1,1.7l0.4,2.9l6.5,5.7l2.8-0.6l-1.7,7.3 l5.2,5.4l5.5,2.2l1.3-2.4h2.3l5.5,5l9.1,1.9l5.3-1.4l2.8,0.1l1.2,6l6.9,1.6l3.7,1.4l2.6,3.1l-2.1,2.2l-0.2,3l3.1,4.2l1,4.9 l-2.8,0.3l-2.3,10.2l2.8,7.9l2.4,1.7l-2.2,3.5l0.4,3.1l3.9,0.9l3.6,3l-2.3,5.2l-6.6,3.1l-1.6,2.4l0.2,3.8l-1.2,2.9l-4.5,0.4 l-4.2,3.8l-6.4-1l-8.9,1l-7.7-1l-6.9,4.1l-4-1.4l-2.1-5.4l2.1-4.1l1-6.6l-7.1-6.8l2.4-7.3l-1.6-5.2l-8.8-2.1l-6.8,0.2l-6.3-0.9 l-2.5-1.2l-2.5-6.4l-13.1-0.5l-2.5-2l-4.2-7.6l4.4-4.4l-0.3-8.7l3.7-0.9l7.5-6.4l-0.4-5l-1.9-4.2l-0.8-4.8l-4.1,0.1l-1-2.8l6-6.5 l2.3-4.6l-2.3-1.6l-0.7-4.1l3-3.5l1.4-5.2L292.7,273.1z"><title id="title_4">Veliko Turnovo ()</title></path></a>
+                    <a href="/Home/RegionData?id=12"><path class="svgpath" region_id="12" d="M68.2,332l-0.1-1.5l-6.3-2.1l-2.9-2.5l-4.6-6.1l-2.4-7.3l-7.3-8l4.8-3.8l2.9-6.9l0.1-2.8l5.6-2.1l5.6-0.3 L69,287l0.5-4.7l-3.1-2.5l1.7-7.1l3.6-5.1l4.7-1.6l1.1-1.7l-1.4-5.5l-3.8-1.5l-1.3-1.8l1.6-1.8l4.8-0.3l1.6-7.8l7.6-0.4l6.3-1.7 l3.8-1.7l8.7-0.9l15.2,1.5l10.1,6.2l2.6,0.5l1,4.5l-1.5,11.5l-3.8,9l-0.2,3.1l-3.6,4.8l6.6,6l-1.3,2.7l-1.6-1l-4.6,4.1l-3.8-0.2 l-2.3-1.5l-4,2.1l-3.1,4.1v5.1l-1,5.2l-7.2,9.7l-1,3.6l7.1,2.9l5.9,3.6l-1.4,3l-2.5,0.1l-2.8,2.1l0.1,3.6l-3.7,3.8l-4.5,1.5 l-3.1-1.2l-6.5,2.1l-9-1.2l-2.4-2l-6.6-8.7L68.2,332z"><title id="title_12">обл. Монтана (173)</title></path></a>
+                    <a href="/Home/RegionData?id=6"><path class="svgpath" region_id="6" d="M108.4,337.1l-0.1-3.6l2.8-2.1l2.5-0.1l1.4-3l-5.9-3.6l-7.1-2.9l1-3.6l7.2-9.7l1-5.2v-5.1l3.1-4.1l4-2.1 l2.3,1.5l3.8,0.2l4.6-4.1l1.6,1l1.3-2.7l-6.6-6l3.6-4.8l0.2-3.1l3.8-9l1.5-11.5l-1-4.5l1.5,0.3l8.2-1.4l2.1,0.4l5.3,3.4l34.2,10 l17-0.3l-1,6.3l-4.2,6l-5.5,2.4l-3.1-0.4l-7.9,7.5l1.7,4.1l1,4.8l2.4,4.2l4.5,1l1.6,6.3l-1.9,12.5l-4.6,2.2l-6.6-0.6l-3,2.5 l-2.8-1.1l-7.3,2.5l-3,6.5l0.8,1.8l6.5,2.9l0.6,5.1l-2.1,8.2l-4.1-1.7l-1.5,1l1.6,7.3l-4.2,4.1l-3.2-2.1l-9.5-2.2l-3.6-1.7 l-4.9,4.2l-5.1,0.7l-2.9-3.4l-8.1,5.4l-5.4-8.3l-5.4-5.2v-2.6l3.5-1l-3.6-3.5L108.4,337.1z"><title id="title_6">обл. Враца (181)</title></path></a>
+                    <a href="/Home/RegionData?id=10"><path class="svgpath" region_id="10" d="M47.2,487.6l-1.7-2.4l-2.7,0.3l-1.7-3l-5.5-0.2l-10.3-5.9L17,470l-3.4-4.9l-1-3.8l-3.6-3l-9-13.6l1.9-1 l5.9-0.3l5-8.5l3.9-1.6l3.1-9.6l-0.9-3.9l-9.3-9.1l1.9-7.9l8.7,0.9l3.8-0.2l2.9,1.7l1,3.8l3.3,5.2l1.7,4.7l3-0.6l1.6,2.6l-0.5,4.2 l4.7,7.6l4.2,3.8l3.8,4.4l2.7-0.3l4.1-3.1l8.1-0.7l8.7,3.1l1.4-3.5l2.7,2.5l5.5,2.1l2.7-0.2l3.3,0.7l4.4-0.4l3,7.6l3.3,3.8l2.1,0.9 l1.3,2.9l-3.1,2.2l-4.5,6.3l1.2,3.1l8.9-1.5l2.4,2.1l1.7,3.5l5.5,1.7l-1.1,2.9l-2.6,1.7l-5,3.8l-5.7,0.7l-12.3-4.5l-5.9-0.2 l-7.9,4.2l-6.2,0.9l-5.3-3.1l-2.9,0.1l-1.6-2.5h-2.5l-3.9,7.2l-2.1-0.4L47.2,487.6z"><title id="title_10">обл. Кюстендил (188)</title></path></a>
+                    <a href="/Home/RegionData?id=5"><path class="svgpath" region_id="5" d="M44.5,304.5l-4.8-1.3l-4.1-4.7l-4-1l-1.9-2.6l-4.4-3L22,280.2l0.5-5.4l-0.5-4.7l-1.5-2.8l-2.7-1.7l-3.1-6 l0.1-6.1l-2.3-3.1l-1-3.7l3.1-9.9l0.4-3.9l1.7-3l0.9-7.5l3.5-2.5l6.6-0.4l3.2-4.8l5.7-0.5l1.2-2l-0.2-6.8l1-5.8l4.4-5.1l4.2-1.7 l19.8,15l3.3,1.7l4.3,0.8l4,2.1l0.7,4.1l-1.8,3.9l-3.4,1.7l-8,1.4l-2,1.1l-4,12.8l1,5.6l2.4,2.2l2.9,0.9l12.9-0.5l-1.6,7.8 l-4.8,0.3l-1.6,1.8l1.3,1.8l3.8,1.5l1.4,5.5l-1.1,1.7l-4.7,1.6l-3.6,5.1l-1.7,7.1l3.1,2.5L69,287l-5.5,1.5l-5.6,0.3l-5.6,2.1 l-0.1,2.8l-2.9,6.9L44.5,304.5z"><title id="title_5">обл. Видин (113)</title></path></a>
+                    <a href="/Home/RegionData?id=2"><path class="svgpath" region_id="2" d="M543.6,385.9l1.4,8.5l-0.3,9.7l-5.1,0.3l-9.5-1l-2.6,4.4l2.4,3l-9.1,2.8l-1.7,1.5l0.2,3.5l2,5.9l-1.6-0.8 l-9.2-0.2l-2.8,1.7l-3.1,9.4l-1.7-0.9l-0.9,3.2l1.9,0.4l4.1,3.5l2.9-3.3l5.1,1.5l3.3-1.4l2.3,5.3l3.8-1.3l2.7,2.7l-2.1,1l2.1,1.8 l-0.4,4.9l2.6,2l3.9-0.7l0.8,3.8l-3.6,4.5l2.3,5.4l3.5,2.3l4.6,4.9l-0.6,1.9l3,1.7l2.4,4.5l5.3,3.3l2.9,2.9l0.1,2.7l3.2,5.7 l-0.2,4.7l-5.1-1.2l-4.8,0.6l-6.4-2.2l-4.4,0.3l-0.5,4.5l1.3,1.7l-2.5,0.5l-6.6-3.2l-3.7-0.1l-7.6,2.1l-5.8,3.8l-0.4,3.1l-5.2-5.4 L499,502l-4.5-4.6l-4.2-6.4l-5.9-4.5l-3.4-0.8l-3.4,1.3l-3,4.1l-5.7-0.6l-3.2-2.2l-3.5-0.6l0.7-6.3l-3.5-7.2l2-6.6l-0.3-5.3 l1.3-2.3l3.3-1.9l0.6-4.1l-1.9-3.7l-3-1.9l-5.9-1l-1.8-4.5l-8.9-6.6l-0.1-2.6l-2.1-1.2l-4.6-6l-2.2-4.6l-1.9-7l-3.8-7.3l-5.7-0.9 l-6.6,2.6l-7.8-3.8l-1.4-3.5l7.8-5.3v-5.7l1.4-1.9l-2.4-7l0.6-5.7l7.1-1.7l0.9,5l3.4,1.5l3.8-0.7l3.2-1.9l3.8-5.1l7.5-0.3l3.1,2.1 l7-0.8l4.1,1.5l9.3-3.3l5.7-1.2l5.8-3.4l4.7,1.6l3.8,3.8l3.1,4.8l4.3,1l4.5,2.6l4.9,1l8.5-2.3l3.7-2.3l5.2,2.3l4.5,4.8l8.1,4.3 l2.9-0.6L543.6,385.9z"><title id="title_2">обл. Бургас (2276)</title></path></a>
+                    <a href="/Home/RegionData?id=28"><path class="svgpath" region_id="27" d="M424.4,406.4l5.7,0.9l3.8,7.3l1.9,7l2.2,4.6l4.6,6l2.1,1.2l0.1,2.6l8.9,6.6l1.8,4.5l5.9,1l3,1.9l1.9,3.7 l-0.6,4.1l-3.3,1.9l-1.3,2.3l0.3,5.3l-2,6.6l3.5,7.2l-0.7,6.3l-2.5,1.2l-2.2,4.1l-3.2,1.8l-2.8,4.3l-4.8,1.5l-2.9-0.3l-3.3,2.5 l-4.6-2l-4.4,3.2l-1.8,0.3l-9.3-1.6l-3.4,1.3l-4.2,4.2l1.2,2.6l-0.7,3.3l-2.2,1.3l-5-2.9l-2-2.4l0.2-5.1l-2.4-3.2l-3.4-0.8 l-3.6,5.2l-1.6-6.2l-3-2.3l-9-1.3l-8.5-4.3l0.1-3.8l-1.3-3.6l0.2-7.4l3.6-3.1l1.5-4.9l-0.7-6.4l5.2-12.2l-4.8-1.5l-0.6-4.9l3.6-0.3 l2.9-1.9l-1-4.1l2.1-1.2l4.9,1.8l4.5-1.5l2.1-5.2l3.6-2.4l-2-3.9l5.3-2.5l5.7,0.6l5.7-1.7l5.3-5.6l2.6,0.4l2.4-2.2l1-3.9 L424.4,406.4z"><title id="title_27">обл. Ямбол (321)</title></path></a>
+                    <a href="/Home/RegionData?id=25"><path class="svgpath" region_id="24" d="M377,372.6l-3.6-3l-3.9-0.9l-0.4-3.1l2.2-3.5l-2.4-1.7l-2.8-7.9l2.3-10.2l2.8-0.3l-1-4.9l-3.1-4.2l0.2-3 l2.1-2.2l-2.6-3.1l-3.7-1.4l-0.1-5.9l-4.8-1.4l-2.2-5.7l2.4-0.7l4.8-4.1l2-7.1l5.2-3.1l6.8,0.6l1.9-1.1l4.2-1.5l4.2,1.3l4.9,3.1 l3.9,4.2l-1.5,4.6l2.4,1.7l5.8,0.9l5,1.7l-0.6,5.1l0.7,3.9h6.1l4.6,1l3.5-3.6l4.1-1l0.4-5.2l4,0.6l4.8,1l0.8,4.6l-3.1,3.2l-1.5,6.1 l3.1,6l-0.2,5.7l-2.8,1.1l-2.5,6l-3.1,1.1l-2.1,3.3l2.9,3l-2.9,2.4l-1.1,4.2l-3.1,1.5l1.5,4.1l-5.3,2.6l-8-4.5l-2.2,1.4l-4.9,0.3 l-3.7-2.4l-1.7,1.9l-0.2-3.1l-2.4-1.1l-2.6,1.2l-3.3-0.3v3.9l-5,6.1L377,372.6z"><title id="title_24">обл. Търговище (141)</title></path></a>
+                    <a href="/Home/RegionData?id=17"><path class="svgpath" region_id="17" d="M430.8,311.7l-4-0.6l-0.4,5.2l-4.1,1l-3.5,3.6l-4.6-1h-6.1l-0.7-3.9l0.6-5.1l-5-1.7l-5.8-0.9l-2.4-1.7 l1.5-4.6l-3.9-4.2l-4.9-3.1l-4.2-1.3l-4.2,1.5l-2.1-3.5l1.8-13.2l2.5,2.4l3.6-2.6l5,0.8l2.6-5.1l1.9-1l-0.2-5.3l1.7-2.4l-5.2-1.6 l-4.9-2.4l0.3-5.2l4.4-2.7l2.2-4.9l7.2-7.9l3.4-0.4l3.1,0.9l2.5,2.9l5.2-2.6l3.8,3.5l2.9,6.6l8.1,3l3.2,0.3l3.1,5l6.6-4.8l2.2,5 l4.2,4l1,4.5l1.7-1.1l6.7,6.6l1.1,4.3l-2.4,2.1l-6.4,8.5l-2.5-2.7l-2.2,0.6l-7.8,7.1l1.7,2.7l-1.4,2.4l-6.9,3.4l-0.5,3.3l1.3,2.8 L430.8,311.7z"><title id="title_17">обл. Разград (127)</title></path></a>
+                    <a href="/Home/RegionData?id=27"><path class="svgpath" region_id="26" d="M469.1,372.3l-9.3,3.3l-4.1-1.5l-7,0.8l-3.1-2.1l-7.5,0.3l-3.8,5.1l-3.2,1.9l-3.8,0.7l-3.4-1.5l-0.9-5 l-7.1,1.7l-1.9-4.5l2.2-3.8l5.3-2.6l-1.5-4.1l3.1-1.5l1.1-4.2l2.9-2.4l-2.9-3l2.1-3.3l3.1-1.1l2.5-6l2.8-1.1l0.2-5.7l-3.1-6 l1.5-6.1l3.1-3.2l-0.8-4.6l-4.8-1l0.9-3.7l-1.3-2.8l0.5-3.3l6.9-3.4l1.4-2.4l-1.7-2.7l7.8-7.1l2.2-0.6l2.5,2.7l6.4-8.5l2.4-2.1 l-1.1-4.3l5.1-2.9l3.8,2.4l3.8,4.4l6.4,0.2l5.4,4.4l2,4l2.8,1.3l7.6-1.9l2.3,1.4l1,3.7l-7.7,2.3l-5.2,4.5l4.7,1.6l-2.2,4.5l2.4,2.9 l-5.3,7.2l-0.8,5.9l3.1,4.5l-5.1,2.9l-0.2,5.9l-6.7,1.1l-2.1,1.7l-0.3,3.2l2.5,2.5l3.1,1.2v3.1l-3.1,1.8l-1.7,2.8l2.3,2.6l-2.7,2.3 l4.5,1.5l0.5,3.2l-4.5,1.1l-8.1,5.1L469.1,372.3z"><title id="title_26">обл. Шумен (198)</title></path></a>
+                    <a href="/Home/RegionData?id=8"><path class="svgpath" region_id="8" d="M497.8,290.5l-1-3.7l-2.3-1.4l-7.6,1.9l-2.8-1.3l-2-4l-5.4-4.4l3.6-0.3l-2.4-3.6l0.3-5.9l7.7-8l4.5,3.6 l4.2-0.1l-1.2-6.6l5.4-2.5l4.9,1.7l3.8-2.8l-0.3-4.1l1-4.1l2.4-0.6l2.1,1.9l2.8-0.6l-0.3-4l3.5-2.1l-0.5-3l4.4-1.5l3.8,5.1l6.2-1.6 l6.6-3.8l5.2-0.7l2.4,3.8l4.5,15.2l3.3,2.5l19.9,8.7l20.5,3.2l13.7-1l-0.1,17.9l3,7l0.1,1.9l-2.3,7.6l-1.7,3.6l-6.8,6.5l-1.4,5.2 l-1.4-1.8l-6.4-4.3l-7-1.7l-7.5,2.8l-8.3,0.2l-3.7,2.2l-3.1,4.8l-7.1,0.4l-4.7-5.2l-3.1-0.2l-6.3,3.9l-5.8-3l-9.1-11.2l-3.6-0.7 l-3.8-3.6l-3.4-4.7l-2.4,3.1l-5.6,2.6l-2.4-1.1l-0.7-3.2l-2.9-4L497.8,290.5z"><title id="title_8">обл. Добрич (189)</title></path></a>
+                    <a href="/Home/RegionData?id=3"><path class="svgpath" region_id="3" d="M562.5,318.5l-5.2,14.2l-3,3.4l-9.3,2.9l3.4,3.4l0.5,2.5l-3.1,12.2l-2.3,3.1l-0.2,4.5l1.9,8.7l-0.4,9l0.5,1.9 l-1.9,1.6l-5.1,2.9l-2.9,0.6l-8.1-4.3l-4.5-4.8l-5.2-2.3l-3.7,2.3l-8.5,2.3l-4.9-1l-4.5-2.6l-4.3-1l-3.1-4.8l-3.8-3.8l-4.7-1.6 l-5.8,3.4l-5.7,1.2l-3.9-6.2l8.1-5.1l4.5-1.1l-0.5-3.2l-4.5-1.5l2.7-2.3l-2.3-2.6l1.7-2.8l3.1-1.8v-3.1l-3.1-1.2l-2.5-2.5l0.3-3.2 l2.1-1.7l6.7-1.1l0.2-5.9l5.1-2.9l-3.1-4.5l0.8-5.9l5.3-7.2l-2.4-2.9l2.2-4.5l-4.7-1.6l5.2-4.5l7.7-2.3l3.8,1l2.9,4l0.7,3.2 l2.4,1.1l5.6-2.6l2.4-3.1l3.4,4.7l3.8,3.6l3.6,0.7l9.1,11.2l5.8,3l6.3-3.9l3.1,0.2l4.7,5.2L562.5,318.5z"><title id="title_3">обл. Варна (527)</title></path></a>
+                    <a href="/Home/RegionData?id=18"><path class="svgpath" region_id="18" d="M399.7,240.2l-7.2,7.9l-2.2,4.9l-4.4,2.7l-0.3,5.2l4.9,2.4l5.2,1.6l-1.7,2.4l0.2,5.3l-1.9,1l-2.6,5.1l-5-0.8 l-3.6,2.6l-2.5-2.4l-1.8,13.2l2.1,3.5L377,296l-6.8-0.6l-5.2,3.1l-2,7.1l-4.8,4.1l-2.4,0.7l2.2,5.7l4.8,1.4l0.1,5.9l-6.9-1.6 l-1.2-6l-2.8-0.1l-5.3,1.4l-9.1-1.9l-5.5-5h-2.3l-1.3,2.4l-5.5-2.2l-5.2-5.4l1.7-7.3l-2.8,0.6l-6.5-5.7l-0.4-2.9l2.1-1.7l2.2-4.5 l-2.4-7.4l7.2,0.1l5.8-2.2l5.3-3.8l6.6-0.1l4-1.7l2.4-4.1l6.1-4.9l4.6-5.7l1.7-3.4L367,242l2.4-4.5l3.5-3.9l3.3-1.7l7.8-1.9 l7.6-3.3l2-0.3l1.7,4.4l2.5,0.4L399.7,240.2z"><title id="title_18">обл. Русе (320)</title></path></a>
+                    <a href="/Home/RegionData?id=1"><path class="svgpath" region_id="1" d="M178.8,554l-3.7,4.5l-1.6-1.9l-6.8-1.5l-3,1.2l0.3,7.3l-0.8,2.1l-4.5-1.3l-5.2,3.3l-5.3-3.8l-2.8,2.4 l-9.1,1.8l-2.4,3.7l-4.9-0.5l-5.2,0.5l-4.1,3.4l-3.4-0.3l-6.4-3.7l-9.8-0.7l-6.9,3.5l-2.1,0.2l-3.7-4l-4.2,1l-3.8,2.6l-1.2,4.7 l-2,1.4l-6.6,0.9L50.1,577l2.4-1.7v-8.1l1.6-2.2l-0.4-3.4l0.3-11.3l0.7-3l-1.4-3.1l1-7L57,536l4.6-9l0.1-3.1l-1.7-2.8l-5-2.4 l-3.2-11.3l-2-1.7l-0.2-3.8l-1.5-6.2l-1-8l3.1-3.2l2.1,0.4l3.9-7.2h2.5l1.6,2.5l2.9-0.1l5.3,3.1l6.2-0.9l7.9-4.2l5.9,0.2l12.3,4.5 l5.7-0.7l5-3.8l5.2,2.2l3.4-3.8l2.1-4.7l9.8-1.7l1.9,0.9l4.5-2.1l0.8,2.6l3.5,3.5l0.2,4.9l-1.3,4.4l1.8,2.4l-3,3.1l-2.7,5.8 l-0.6,4.8l2.5,4.6l0.3,5.9l2.4,5.1l4.5,3.9h3.7l2.1,3.7l11,8.1l3,3.3l4.9,4.4l-4.6,3.9L178.8,554z"><title id="title_1">обл. Благоевград (269)</title></path></a>
+                    <a href="/Home/RegionData?id=20"><path class="svgpath" region_id="20" d="M341.5,394.2l8.9-1l6.4,1l4.2-3.8l4.5-0.4l1.2-2.9l-0.2-3.8l1.6-2.4l6.6-3.1l2.3-5.2l5.1-1.2l5-6.1v-3.9 l3.3,0.3l2.6-1.2l2.4,1.1l0.2,3.1l1.7-1.9l3.7,2.4l4.9-0.3l2.2-1.4l8,4.5l-2.2,3.8l1.9,4.5l-0.6,5.7l2.4,7l-1.4,1.9v5.7l-7.8,5.3 l1.4,3.5l7.8,3.8l6.6-2.6l0.3,4.4l-1,3.9l-2.4,2.2l-2.6-0.4l-5.3,5.6l-5.7,1.7l-5.7-0.6l-5.3,2.5l2,3.9l-3.6,2.4l-2.1,5.2l-4.5,1.5 l-4.9-1.8l-2.1,1.2l1,4.1l-2.9,1.9l-3.6,0.3l0.6,4.9l4.8,1.5l-5.2,12.2l0.7,6.4l-1.5,4.9l-3.6,3.1l-4.5-0.6l-5.9,1l-4.9-6l0.6-9.6 l-1.9-6l-4.5-6.5l-1.3-3l0.2-3.3l-2.7-5.1l1-5.9l-1.7-3.1l-3.2-2.8l5.1-3.8l-0.3-4.8l-2.6-5.3l-2.7-9.4L341.5,394.2z"><title id="title_20">обл. Сливен (296)</title></path></a>
+                    <a href="/Home/RegionData?id=24"><path class="svgpath" region_id="23" d="M341.5,394.2l1,9l2.7,9.4l2.6,5.3l0.3,4.8l-5.1,3.8l3.2,2.8l1.7,3.1l-1,5.9l2.7,5.1l-0.2,3.3l1.3,3 l4.5,6.5l1.9,6l-0.6,9.6l4.9,6l5.9-1l4.5,0.6l-0.2,7.4l1.3,3.6l-0.1,3.8l-8.5,3.3l-2.8-2.4l-2.5-3.8l-5.1-5.7l-7.9-2.7l-6.6,6.5 l-4.6,2.1l-2.3-3.3l-6.7-6.6l-3.1,1.5l-2.4-0.8l1.5-2l0.2-4.6l-3.3-1.7l-4.8,3.2l-3.3-1.2l-3.2,1.2l-2.5,8.9l-5.1-2h-3.3l-3.4-1.6 l-2.4-3.7l-3.6-2.6l-3.1-0.9l-5.2,1l-1.6,3.1l-1.3-2.2l-6.4-3.8l-1.3-5.5l1.4-4.5l6.2-2.9l-3.1-7.4l-0.5-8l2.8-1.8l5.2,1.8l0.7-1.8 l-3.9-5.1l2-4.6l-1.5-2.7l-3.3,1l-4.4-0.3l-5.3-5.2l-0.6-4.7l-2.3-5.3l2.9-3.2l-1.4-9.5l0.6-4.6l5,0.5l5.1-0.9l5.2-2.3l4.9-0.2 l2.9,4l4-2.2l5.2,1.1l5.1,2.3l3.1-0.2l2.4-1.8l3.2,0.9l3.3-1.7l1.8,0.8l2.3-2.5l5.2,4.6l0.8-3.8l4,1.4l6.9-4.1L341.5,394.2z"><title id="title_23">обл. Стара Загора (351)</title></path></a>
+                    <a href="/Home/RegionData?id=26"><path class="svgpath" region_id="25" d="M292.9,480.5l3.4,1.6h3.3l5.1,2l2.5-8.9l3.2-1.2l3.3,1.2l4.8-3.2l3.3,1.7l-0.2,4.6l-1.5,2l2.4,0.8l3.1-1.5 l6.7,6.6l2.3,3.3l4.6-2.1l6.6-6.5l7.9,2.7l5.1,5.7l2.5,3.8l2.8,2.4l8.5-3.3l8.5,4.3l9,1.3l3,2.3l1.6,6.2l3.6-5.2l3.4,0.8l2.4,3.2 l-0.2,5.1l2,2.4l5,2.9l2.2-1.3l-1.4,5.9l-1.3,1.7l-4.7,1.5l-10.2-0.5l-4.1,3.5l-1.7,6.1l1.7,4l-5.9-0.3l-3.8-4.1l-2.3-0.7l-2.2,2.1 l-8.1,0.8l-4.7,2.7l-1.3,2.4l1.1,6l-5,1l-1.1,2.2l-3.4,0.8l-0.8,2.7l-4,3.8l-4.3-2.1l-4.5-4.9l-1-5.3l-3.5-1.3l-3.5,1.7l-3.3,4 l-3.4-1.3l-4,1.2L319,546l0.6-3.7l2.4-5.2l-4.7-8l-1.8-0.1l-3.4-3.4l-6.1,2.1l-6.1-3.8l-1.7-6.5l-3.6,1l-2.3,2.7l-3.1,1l-5.2-1.1 l-3.4-8.2l1.2-3.2l5.2-3.3l3.4-5.6l0.3-2.1l-2.5-13.2l0.3-6.1L292.9,480.5z"><title id="title_25">обл. Хасково (233)</title></path></a>
+                    <a href="/Home/RegionData?id=16"><path class="svgpath" region_id="16" d="M263.4,397.2l-0.6,4.6l1.4,9.5l-2.9,3.2l2.3,5.3l0.6,4.7l5.3,5.2l4.4,0.3l3.3-1l1.5,2.7l-2,4.6l3.9,5.1 l-0.7,1.8l-5.2-1.8l-2.8,1.8l0.5,8l3.1,7.4l-6.2,2.9l-1.4,4.5l1.3,5.5l6.4,3.8l1.3,2.2l1.6-3.1l5.2-1l3.1,0.9l3.6,2.6l2.4,3.7 l-4.5-1.3l-0.3,6.1l2.5,13.2l-0.3,2.1l-3.4,5.6l-5.2,3.3l-2.6-0.7l-4.6,3.4l-2.6,4.9l-2.3,1.7l-1.1,5l-2.4-0.3l-3.6-0.9l-3.6-5.1 l-5.9,0.9l-1.8-3.6l-6.7-5.2l-3.5-4.8l-4.8-1.4l-10.1,1.7l-9.6,5.1l-10.8-8.8l1.3-6.1l-1.7-10l1.3-3l-0.2-5.5l5.1-2.3l1.5-2 l-3.1-3.2l0.8-6.4l-2.3-8l1.6-3.4l-2.2-3.9l-1.7-0.8l-0.5-9.9l-1.1-3.3l-2.1-0.5l0.4-6.6l1.3-6.3l3.3-0.1l2.6-1.7l0.5-2.9l-2.4-1.8 l-2.9-4.4l-4.2-2.4l-1-6.1l3.8-6.2l4,0.6l6.2-5.2l8.3,0.7l4.4,1.8l3.1,4.5l3.8,3.5l4.6,1.1l2.3-1.2l5.2,0.1l5,1.3l4.5-0.3l4.1-2.4 l1.4-2.7l3.1-0.6V397.2z"><title id="title_16">обл. Пловдив (784)</title></path></a>
+                    <a href="/Home/RegionData?id=13"><path class="svgpath" region_id="13" d="M203.8,420.3l-1.3,6.3l-0.4,6.6l2.1,0.5l1.1,3.3l0.5,9.9l1.7,0.8l2.2,3.9l-1.6,3.4l2.3,8l-0.8,6.4l3.1,3.2 l-1.5,2l-5.1,2.3l0.2,5.5l-1.3,3l1.7,10l-1.3,6.1l-2.9,7.9l-6.6,3.5l-4.5,5.8l-0.2,6.1l-4.5,3.7h-5.7l-3.7,1.6l1.3-4.7l-3.8-3.8 l-4.9-1l-3.7,0.6l0.3,3.1l3.1,3.6l0.2,4.3l-3.1,3l-3-3.3l-11-8.1l-2.1-3.7h-3.7l-4.5-3.9l-2.4-5.1l-0.3-5.9l-2.5-4.6l0.6-4.8 l2.7-5.8l3-3.1l-1.8-2.4l1.3-4.4l-0.2-4.9l-3.5-3.5l-0.8-2.6l3.2-1.3l0.6-3l4.7-1.7l3.4-4.6l0.9-3.8l2.4-0.6l4.4,3.9l1.7-2 l-2.9-8.5l1.9-6l4-0.3l3.8-1.5l1.7-4.9l-1.5-2.6l-5,0.6l-6.3-6.7l-2.1-5.2l0.7-3l5.7-1.1l7,3.7l4.7-2.4l4.7-1l2.9-3.8l7.1-2.3 l5.4,1.3l1.5,4.5l4.6,3.1L203.8,420.3z"><title id="title_13">обл. Пазарджик (367)</title></path></a>
+                    <a href="/Home/RegionData?id=21"><path class="svgpath" region_id="21" d="M167,535.2l3.1-3l-0.2-4.3l-3.1-3.6l-0.3-3.1l3.7-0.6l4.9,1l3.8,3.8l-1.3,4.7l3.7-1.6h5.7l4.5-3.7l0.2-6.1 l4.5-5.8l6.6-3.5l2.9-7.9l10.8,8.8l9.6-5.1l10.1-1.7l4.8,1.4l3.5,4.8l6.7,5.2l1.8,3.6l5.9-0.9l3.6,5.1l3.6,0.9l-3,4.5l2.6,4.8 l1.7,8.5l0.4,5.2l-2.5,1.8l-7.2,0.9v3l1.7,2.4l3.4,7.9l2.3,1.2l1.8-2.7l5.4-1.4l0.9,6.1L273,572l-1.4,3l1.9,3.2l-1,2.4l0.6,7.7 l-3.7-1.8l-1.4-2.2l-2.2,0.3l-16.2-7.3l-3-1.9l-8.3,0.9l-1,5.9l-2-0.2l-5.3-6.5l-3.8-2.7l-4.2-0.3l0.6-1.3l-4.8-0.4l-1.4-4.1 l-3.1-3.4l-1.6-8.2l-2-1.9l-5.1,1.4l-2.2,2.9l-8.5,0.9h-6.6l0.1-3.1l-3.5-3.1l-5.3,1.9l-11.5-10.5l4.6-3.9L167,535.2z"><title id="title_21">обл. Смолян (166)</title></path></a>
+                    <a href="/Home/RegionData?id=9"><path class="svgpath" region_id="9" d="M281.7,509.6l-1.2,3.2l3.4,8.2l5.2,1.1l3.1-1l2.3-2.7l3.6-1l1.7,6.5l6.1,3.8l6.1-2.1l3.4,3.4l1.8,0.1l4.7,8 l-2.4,5.2L319,546l3.3,1.7l4-1.2l3.4,1.3l3.3-4l3.5-1.7l3.5,1.3l1,5.3l4.5,4.9l4.3,2.1l4-3.8l0.8-2.7l3.4-0.8l1.1-2.2l5-1l4.6,2.6 l2.3,5.6l-0.1,3.1l2.8,2.3l0.6,3.2l-1.9,5.2l2.8,4.3l-5.4,11.6l-9.9,2l-6.3,3.5l-3.8-0.2l-3.9,1.5l-4.8-4.1l-2.2-0.9l-4.8,2.9 l-4.5,0.5l-2.7,2.1l-5.1-1.7l-8.8-0.8l-4.7,4.5l-5.2-0.1l-16.8,5.2l-4.7-0.3l-1.9-1.2l-4.1-5.9l-2.3-1.8l-0.6-7.7l1-2.4l-1.9-3.2 l1.4-3l0.5-6.2l-0.9-6.1l-5.4,1.4l-1.8,2.7l-2.3-1.2l-3.4-7.9l-1.7-2.4v-3l7.2-0.9l2.5-1.8l-0.4-5.2l-1.7-8.5l-2.6-4.8l3-4.5 l2.4,0.3l1.1-5l2.3-1.7l2.6-4.9l4.6-3.4L281.7,509.6z"><title id="title_9">обл. Кърджали (207)</title></path></a>
+                    <a href="/Home/RegionData?id=22"><path class="svgpath" region_id="22" transform="translate(0,190)" d="M 72.599609,141.19922 68.099609,142 67,148.09961 62.900391,155.30078 59.099609,158.19922 57.699219,161.5 52,167 l -5,1 -4.199219,10.5 2.5,2.59961 2.798828,5.59961 3.300782,0.40039 2.798828,-1.40039 -0.798828,4.10156 1.798828,1.5 2.40039,-1.30078 3.300782,5.80078 2.90039,0.0996 1,1.79883 4.798828,0.30078 c 7.619752,20.38512 -3.123875,-7.39178 3.09961,7.69922 L 81,212.59961 l 1.5,4.80078 0.300781,4.59961 3,1.30078 7.083985,6.69531 -3.285157,4.50391 -2.40039,5.90039 0.701172,5.79883 -1.800782,4.40039 3.300782,0.70117 4.40039,-0.40039 3,7.59961 3.298829,3.80078 2.09961,0.89844 1.30078,2.90039 -3.09961,2.20117 -4.499999,6.29883 1.199218,3.09961 8.900391,-1.5 2.40039,2.10156 1.69922,3.5 5.5,1.69922 -1.09961,2.90039 -2.59961,1.69922 5.19922,2.20117 L 120.5,286.5 l 2.09961,-4.69922 9.80078,-1.70117 1.90039,0.90039 4.5,-2.09961 3.19922,-1.30078 0.59961,-3 4.70117,-1.69922 3.39844,-4.59961 0.90039,-3.80078 2.40039,-0.59961 4.40039,3.90039 1.69922,-2 -2.90039,-8.5 1.90039,-6 4,-0.30078 3.80078,-1.5 1.69922,-4.90039 -1.5,-2.59961 -5,0.59961 -6.29883,-6.69922 -2.10156,-5.20117 0.70117,-3 5.69922,-1.09961 7,3.70117 4.70117,-2.40039 4.69922,-1 2.90039,-3.80078 7.09961,-2.29883 5.40039,1.29883 1.5,4.5 4.59961,3.09961 5.69922,0.60156 3.30078,-0.10156 2.59961,-1.69922 0.5,-2.90039 -2.40039,-1.79883 -2.89844,-4.40039 -4.20117,-2.40039 -1,-6.09961 3.80078,-6.20117 -6.30078,-0.79883 -4.5,-3.09961 -12.29883,-0.5 L 178.5,197.19922 180,192 l 0.19922,-8.59961 -2,-3.70117 -3.79883,-1 -4.30078,-5 0.30078,-5.5 -3.70117,-5.29883 -2.79883,-0.0996 -4.20117,4.09961 -3.19922,-2.09961 -9.5,-2.20117 -3.59961,-1.69922 -4.90039,4.19922 -5.09961,0.70117 L 130.5,162.4004 122.40039,167.80079 117,159.5 l -5.40039,-5.19922 v -2.60156 l 3.5,-1 -3.59961,-3.5 -3.09961,-0.29883 -3.70117,3.79883 -4.5,1.5 L 97.099609,151 l -6.5,2.09961 -9,-1.19922 -2.40039,-2 z"><title id="title_22">обл. София (1773)</title></path></a>
+                    <a href="/Home/RegionData?id=14"><path class="svgpath" region_id="14" d="M72.7,395.7l8.3,6.8l1.5,4.8l0.3,4.6l3,1.3l7.3,6.9l-3.5,4.8l-2.4,5.9l0.7,5.8l-1.8,4.4l-2.7,0.2l-5.5-2.1 l-2.7-2.5l-1.4,3.5l-8.7-3.1l-8.1,0.7l-4.1,3.1l-2.7,0.3l-3.8-4.4l-4.2-3.8l-4.7-7.6l0.5-4.2l-1.6-2.6l-3,0.6l-1.7-4.7l-3.3-5.2 l-1-3.8l-2.9-1.7l-3.8,0.2l-8.7-0.9l1-4.6l-0.6-1.8l4.3-7.5l-2.6-3.3l-2.3-6.2l2-2.6l3.7-2l2.5-3l3.1,0.4l2.6-2l2.7-0.2l7.3,2.4 l5.9-1.7l1.3-1.5l2.5,2.6l2.8,5.6l3.3,0.4l2.8-1.4l-0.8,4.1l1.8,1.5l2.4-1.3l3.3,5.8l2.9,0.1l1,1.8l4.8,0.3L72.7,395.7z"><title id="title_14">обл. Перник (148)</title></path></a>
+                    <a href="/Home/RegionData?id=7"><path class="svgpath" region_id="7" d="M322.9,395.9l-0.8,3.8l-5.2-4.6l-2.3,2.5l-1.8-0.8l-3.3,1.7l-3.2-0.9l-2.4,1.8l-3.1,0.2l-5.1-2.3l-5.2-1.1 l-4,2.2l-2.9-4l-4.9,0.2l-5.2,2.3l-5.1,0.9l-5-0.5v-1.3l-0.7-6.6l-2.3-6.1l-8-4.9l-2.3-13l5.2-6.1l-0.7-4.3l1.3-5.3l3.8-2.6l0.8-5 l1.7-4l8.4,2.1l4.2,7.6l2.5,2l13.1,0.5l2.5,6.4l2.5,1.2l6.3,0.9l6.8-0.2l8.8,2.1l1.6,5.2l-2.4,7.3l7.1,6.8l-1,6.6l-2.1,4.1 L322.9,395.9z"><title id="title_7">обл. Габрово (115)</title></path></a>
+                    <a href="/Home/RegionData?id=11"><path class="svgpath" region_id="11" d="M270.7,340l-8.4-2.1l-1.7,4l-0.8,5l-3.8,2.6l-1.3,5.3l0.7,4.3l-5.2,6.1l2.3,13l8,4.9l2.3,6.1l0.7,6.6l-3.1,0.6 l-1.4,2.7l-4.1,2.4l-4.5,0.3l-5-1.3l-5.2-0.1l-2.3,1.2l-4.6-1.1l-3.8-3.5l-3.1-4.5l-4.4-1.8l-8.3-0.7l-6.2,5.2l-4-0.6l-6.2-0.5 l-4.5-3.1l-12.3-0.5l-1.8-3.1l1.5-5.2l0.2-8.6l-2-3.7l-3.8-1l-4.3-5l0.3-5.5l-3.7-5.3L164,353l-1.6-7.3l1.5-1l4.1,1.7l2.1-8.2 l-0.6-5.1l10.4-5.1l2.3,2l2.2-0.3l5.3,2.2l8-2.4l3.7-3.6l3.8-0.4l4.7,6.4l6.9,2.3l4.7,0.3l1,1.7l5-3.3l3.9-5.6l1,1.6l2.5-2.8 l5.2-3.6l11.8-0.3l2,2.5l8.2-2l4.4-3.4l0.6-3.5l4.2,7.8l3.4,3.5l0.3,8.7L270.7,340z"><title id="title_11">обл. Ловеч (220)</title></path></a>
+                    <a href="/Home/RegionData?id=15"><path class="svgpath" region_id="15" d="M274.8,327l-3.4-3.5l-4.2-7.8l-0.6,3.5l-4.4,3.4l-8.2,2l-2-2.5l-11.8,0.3l-5.2,3.6l-2.5,2.8l-1-1.6l-3.9,5.6 l-5,3.3l-1-1.7l-4.7-0.3l-6.9-2.3l-4.7-6.4l-3.8,0.4l-3.7,3.6l-8,2.4l-5.3-2.2l-2.2,0.3l-2.3-2l-10.4,5.1l-6.5-2.9l-0.8-1.8l3-6.5 l7.3-2.5l2.8,1.1l3-2.5l6.6,0.6l4.6-2.2l1.9-12.5l-1.6-6.3l-4.5-1l-2.4-4.2l-1-4.8l-1.7-4.1l7.9-7.5l3.1,0.4l5.5-2.4l4.2-6l1-6.3 l3.8-0.5l5.4-3.8l3.4-1l3.2,0.5l19.5,8l4.5,0.7l20.3-0.9l11.2,4.4l12.4,1.2l7.1,3l-5.3,4.5l-1.4,5.2l-3,3.5l0.7,4.1l2.3,1.6 l-2.3,4.6l-6,6.5l1,2.8l4.1-0.1l0.8,4.8l1.9,4.2l0.4,5l-7.5,6.4L274.8,327z"><title id="title_15">обл. Плевен (166)</title></path></a>
+                    <a href="/Home/RegionData?id=19"><path class="svgpath" region_id="19" d="M476.7,277.6l-6.4-0.2l-3.8-4.4l-3.8-2.4l-5.1,2.9l-6.7-6.6l-1.7,1.1l-1-4.5l-4.2-4l-2.2-5l-6.6,4.8 l-3.1-5l-3.2-0.3l-8.1-3l-2.9-6.6l-3.8-3.5l-5.2,2.6l-2.5-2.9l-3.1-0.9l-3.4,0.4l-1.8-9.3l-2.5-0.4l-1.7-4.4l27-3.8l9-3.1h4.3 l3.4-1l9.1-5.3l11.2-1.1l2.4-1.6l6.9,4.3l14.4,2.9l1.7,1.4l-0.4,3l2,2.3l5.3,2.5l4.1,5l18.2-0.3l5.6-1.7l2.2,0.7l2.5,4.8l-4.4,1.5 l0.5,3l-3.5,2.1l0.3,4l-2.8,0.6l-2.1-1.9l-2.4,0.6l-1,4.1l0.3,4.1l-3.8,2.8l-4.9-1.7l-5.4,2.5l1.2,6.6l-4.2,0.1l-4.5-3.6l-7.7,8 l-0.3,5.9l2.4,3.6L476.7,277.6z"><title id="title_19">обл. Силистра (144)</title></path></a>
+                </g>
+
+                <g class="region_g"><text id="text_title_2" x="463" y="420">Бургас</text><circle r="6" id="circle_2" region_id="2" location_id="300" class="svgcity" cx="498" cy="437" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_3" x="511" y="358">Варна</text><circle r="6" id="circle_3" region_id="3" location_id="554" class="svgcity" cx="542" cy="337" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_8" x="511" y="279">Добрич</text><circle r="6" id="circle_8" region_id="8" location_id="1846" class="svgcity" cx="538" cy="294" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_26" x="437" y="318">Шумен</text><circle r="6" id="circle_26" region_id="26" location_id="5191" class="svgcity" cx="448" cy="329" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_27" x="384" y="459">Ямбол</text><circle r="6" id="circle_27" region_id="27" location_id="5302" class="svgcity" cx="412" cy="436" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_20" x="364" y="398">Сливен</text><circle r="6" id="circle_20" region_id="20" location_id="3792" class="svgcity" cx="389" cy="411" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_24" x="370" y="354">Търговище</text><circle r="6" id="circle_24" region_id="24" location_id="4765" class="svgcity" cx="422" cy="330" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_17" x="396" y="271">Разград</text><circle r="6" id="circle_17" region_id="17" location_id="3475" class="svgcity" cx="407" cy="281" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_19" x="419" y="240">Силистра</text><circle r="6" id="circle_19" region_id="19" location_id="3677" class="svgcity" cx="466" cy="218" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_18" x="340" y="280">Русе</text><circle r="6" id="circle_18" region_id="18" location_id="3564" class="svgcity" cx="354" cy="258" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_4" x="279" y="339">Велико Търново</text><circle r="6" id="circle_4" region_id="4" location_id="734" class="svgcity" cx="328" cy="355" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_7" x="253" y="371">Габрово</text><circle r="6" id="circle_7" region_id="7" location_id="1351" class="svgcity" cx="294" cy="382" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_23" x="266" y="424">Стара Загора</text><circle r="6" id="circle_23" region_id="23" location_id="4550" class="svgcity" cx="319" cy="440" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_25" x="326" y="514">Хасково</text><circle r="6" id="circle_25" region_id="25" location_id="5027" class="svgcity" cx="318" cy="508" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_9" x="279" y="568">Кърджали</text><circle r="6" id="circle_9" region_id="9" location_id="2077" class="svgcity" cx="292" cy="546" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_21" x="192" y="538">Смолян</text><circle r="6" id="circle_21" region_id="21" location_id="4008" class="svgcity" cx="227" cy="551" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_16" x="205" y="463">Пловдив</text><circle r="6" id="circle_16" region_id="16" location_id="3333" class="svgcity" cx="240" cy="479" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_11" x="179" y="356">Ловеч</text><circle r="6" id="circle_11" region_id="11" location_id="2595" class="svgcity" cx="240" cy="351" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_15" x="215" y="297">Плевен</text><circle r="6" id="circle_15" region_id="15" location_id="3154" class="svgcity" cx="201.0862" cy="293.272" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_6" x="111" y="319">Враца</text><circle r="6" id="circle_6" region_id="6" location_id="1191" class="svgcity" cx="126" cy="337" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_12" x="69" y="297">Монтана</text><circle r="6" id="circle_12" region_id="12" location_id="2734" class="svgcity" cx="95" cy="307" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_5" x="17" y="253">Видин</text><circle r="6" id="circle_5" region_id="5" location_id="1047" class="svgcity" cx="56" cy="228" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_22" x="92" y="380">София</text><circle r="9" id="circle_22" region_id="22" location_id="4342" class="svgcity svgcity_sofia" cx="110" cy="400" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_14" x="17" y="402">Перник</text><circle r="6" id="circle_14" region_id="14" location_id="3015" class="svgcity" cx="70" cy="415" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_10" x="17" y="476">Кюстендил</text><circle r="6" id="circle_10" region_id="10" location_id="2424" class="svgcity" cx="35" cy="455" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_1" x="39" y="516">Благоевград</text><circle r="6" id="circle_1" region_id="1" location_id="19" class="svgcity" cx="76" cy="497" style="pointer-events: none;"></circle></g>
+                <g class="region_g"><text id="text_title_13" x="139" y="489">Пазарджик</text><circle id="circle_13" r="6" region_id="13" location_id="2849" class="svgcity" cx="195" cy="470" style="pointer-events: none;"></circle></g>
+
+            </svg>
+        </div>
+    </section>
+    <section id="info">
+        <h1 class="text-center mt-5 mb-3">Info</h1>
+            <div class="row ">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-cherry">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">New Cases</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        @Model.overall.confirmed.last
+                                    </h5>
+                                    <div class="mt-4">
+                                        <p>by antigen: @Model.overall.confirmed.last_by_type.antigen</p>
+                                        <p>by PCR: @Model.overall.confirmed.last_by_type.pcr</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-blue-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Total cases</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        @Model.overall.confirmed.total
+                                    </h5>
+                                    <div class="mt-4">
+                                        <p>by antigen: @Model.overall.confirmed.total_by_type.antigen</p>
+                                        <p>by PCR: @Model.overall.confirmed.total_by_type.pcr</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-7">
+                    <div class="card l-bg-green-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">New vaccinated</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        @Model.overall.vaccinated.last
+                                    </h5>
+                                    <div class="mt-4">
+                                        <p>astrazeneca: @Model.overall.vaccinated.last_by_type.astrazeneca</p>
+                                        <p>janssen: @Model.overall.vaccinated.last_by_type.janssen</p>
+                                        <p>moderna: @Model.overall.vaccinated.last_by_type.moderna</p>
+                                        <p>pfeizer: @Model.overall.vaccinated.last_by_type.pfeizer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-orange-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Fully vaccinated</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        @Model.overall.vaccinated.total_completed
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-cherry">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Deceased</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        Total: @Model.overall.deceased.total
+                                    </h5>
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        New: @Model.overall.deceased.last
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-blue-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h4 class="card-title mb-0">Tested</h4>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <div>
+                                        <h5 class="d-flex align-items-center mb-0">
+                                            Total: @Model.overall.tested.last
+                                        </h5>
+                                        <p>by antigen:@Model.overall.tested.total_by_type.antigen</p>
+                                        <p>by PCR:@Model.overall.tested.total_by_type.pcr</p>
+                                    </div>
+                                    <div>
+                                        <h5 class="d-flex align-items-center mb-0">
+                                            New: @Model.overall.tested.last
+                                        </h5>
+                                        <p>by antigen:@Model.overall.tested.last_by_type.antigen</p>
+                                        <p>by PCR:@Model.overall.tested.last_by_type.pcr</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-green-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Recovered</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        Total: @Model.overall.recovered.total
+                                    </h5>
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        New: @Model.overall.recovered.last
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card l-bg-orange-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large"></div>
+                            <div class="mb-4">
+                                <h5 class="card-title mb-0">Medical</h5>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-10">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        Total: @Model.overall.confirmed.medical.total
+                                    </h5>
+                                    <p>doctors:@Model.overall.confirmed.medical.total_by_type.doctor</p>
+                                    <p>nurses:@Model.overall.confirmed.medical.total_by_type.nurces</p>
+                                    <p>paramedics:@Model.overall.confirmed.medical.total_by_type.paramedics_1</p>
+                                    <p>paramedics2:@Model.overall.confirmed.medical.total_by_type.paramedics_2</p>
+                                    <p>other:@Model.overall.confirmed.medical.total_by_type.other</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section id="stats" >
+        <h1 class="text-center mt-5 mb-3">Stats</h1>
+            <div class="row ">
+                <div class="col-xl-4 col-lg-6">
+                    <div class="card l-bg-cherry">
+                        <div class="card-statistic-3 p-4">
+                            <div class="mb-4">
+                                <h3 class="card-title mb-0 text-center">Tested</h3>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        By PCR
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.tested.total_by_type_prc.pcr % </span>
+                                    
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.tested.total_by_type_prc.pcr%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 mt-4 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        By antigen
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.tested.total_by_type_prc.antigen % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="@Model.stats.tested.total_by_type_prc.antigen%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.tested.total_by_type_prc.antigen%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6">
+                    <div class="card l-bg-blue-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="mb-4">
+                                <h3 class="card-title mb-0 text-center">Confirmed</h3>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        total
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.confirmed.total_per_tested_prc % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.confirmed.total_per_tested_prc%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        tested
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.confirmed.last_per_tested_prc % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.confirmed.last_per_tested_prc%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        tested by pcr (total)
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.confirmed.total_by_type_prc.pcr % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.confirmed.total_by_type_prc.pcr%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        tested by antigen (total)
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.confirmed.total_by_type_prc.antigen % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.confirmed.total_by_type_prc.antigen%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        tested by pcr (new)
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.confirmed.last_by_type_prc.pcr % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.confirmed.last_by_type_prc.pcr%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        tested by antigen (new)
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.confirmed.last_by_type_prc.antigen % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.confirmed.last_by_type_prc.antigen%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        medical
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.confirmed.medical_prc % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.confirmed.medical_prc%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6">
+                    <div class="card l-bg-orange-dark">
+                        <div class="card-statistic-3 p-4">
+                            <div class="mb-4">
+                                <h3 class="card-title mb-0 text-center">Active</h3>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        Hospitalized
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.active.hospitalized_per_active % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.active.hospitalized_per_active%;"></div>
+                            </div>
+                            <div class="row align-items-center mb-2 d-flex">
+                                <div class="col-8">
+                                    <h5 class="d-flex align-items-center mb-0">
+                                        Intensive care unit
+                                    </h5>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <span>@Model.stats.active.icu_per_hospitalized % </span>
+                                </div>
+                            </div>
+                            <div class="progress mt-1 " data-height="8" style="height: 8px;">
+                                <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.stats.active.icu_per_hospitalized%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+</html>
