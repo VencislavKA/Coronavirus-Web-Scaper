@@ -1,6 +1,10 @@
-﻿using Coronavirus_Web_Scaper.Models;
+﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
+using Coronavirus_Web_Scaper.Models;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using System.Configuration;
 
 namespace Coronavirus_Web_Scaper
 {
@@ -12,7 +16,11 @@ namespace Coronavirus_Web_Scaper
 		/// <returns>MongoCollecrion</returns>
 		public static IMongoCollection<Rootobject> GetCollection()
 		{
-			var client = new MongoClient("mongodb+srv://admin:admin@cluster0.ci13y.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+			var config = new ConfigurationBuilder()
+				.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+				.AddJsonFile("appsettings.json").Build();
+			var section = config.GetSection("ConnectionStrings");
+			var client = new MongoClient(section.Value);
 			return client.GetDatabase("Corona").GetCollection<Rootobject>("Corona");
 		}
 

@@ -1,4 +1,5 @@
-﻿using Coronavirus_Web_Scaper.Models;
+﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
+using Coronavirus_Web_Scaper.Models;
 using HtmlAgilityPack;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,8 +20,8 @@ namespace Coronavirus_Web_Scaper
         /// <summary>
         /// Creting timer to know wnen to update the information in the database.
         /// </summary>
-        static Timer timer = new Timer(86400000);
-
+        //static Timer timer = new Timer(86400000);
+        static Timer timer = new Timer(1000);
         /// <summary>
         /// In the main method I check if there is a record in the database. If there is not I create it. 
         /// After that I start the timer with atached event on it to update the information in the database.
@@ -28,12 +29,11 @@ namespace Coronavirus_Web_Scaper
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            
 			if (Mongo.GetRootobject(dbcollection) == null)
 			{
                 dbcollection.InsertOne(GetValidatedDataFromSite());
             }
-			timer.Elapsed += Timer_Elapsed1; ;
+			timer.Elapsed += Timer_Elapsed1;
             timer.AutoReset = true;
             timer.Start();
             CreateHostBuilder(args).Build().Run();
@@ -42,8 +42,7 @@ namespace Coronavirus_Web_Scaper
 		private static void Timer_Elapsed1(object sender, ElapsedEventArgs e)
 		{
             timer.Stop();
-            GC.Collect();
-            var filter = Builders<Rootobject>.Filter.Eq("_id", 0);
+            var filter = Builders<Rootobject>.Filter.Eq("country", "BG");
             dbcollection.DeleteOne(filter);
             dbcollection.InsertOne(GetValidatedDataFromSite());
             timer.Start();
