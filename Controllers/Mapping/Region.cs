@@ -2,8 +2,6 @@
 {
 	public class Region
 	{
-		public int id { get; set; }
-
 		public string NameByЕКАТТЕ { get; set; }
 
 		public string Name { get; set; }

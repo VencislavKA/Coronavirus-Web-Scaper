@@ -3,6 +3,7 @@
 	public class Recovered
 	{
 		public int total { get; set; }
+
 		public int last { get; set; }
 	}
 }

@@ -46,10 +46,10 @@ namespace Coronavirus_Web_Scaper.Controllers
 		/// </summary>
 		/// <param name="id">This id refers to the id of every region in my database.</param>
 		/// <returns>Returns a view with that data for it in the format of class Region</returns>
-		public IActionResult RegionData(int id)
+		public IActionResult RegionData(string name)
 		{
 			var rootobject = Mongo.GetRootobject(dbcollection);
-			var region = rootobject.regions.Where(x => x.id == id).FirstOrDefault();
+			var region = rootobject.regions.Where(x => x.NameByЕКАТТЕ == name).FirstOrDefault();
 			return this.View(region);
 		}
 

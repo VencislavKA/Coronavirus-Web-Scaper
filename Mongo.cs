@@ -10,6 +10,7 @@ namespace Coronavirus_Web_Scaper
 {
 	public static class Mongo
 	{
+		private static Rootobject CacheRootobject { get; set; }
 		/// <summary>
 		/// I Create client that connects to my mongoDB server and returns MongoCollection
 		/// </summary>
@@ -32,7 +33,11 @@ namespace Coronavirus_Web_Scaper
 		public static Rootobject GetRootobject(IMongoCollection<Rootobject> collection)
 		{
 			var filter = Builders<Rootobject>.Filter.Eq("country", "BG");
-			return collection.Find(filter).FirstOrDefault();
+			if (collection.Find(filter).FirstOrDefault() != CacheRootobject)
+			{
+				CacheRootobject = collection.Find(filter).FirstOrDefault();
+			}
+			return CacheRootobject;
 		}
     }
 }

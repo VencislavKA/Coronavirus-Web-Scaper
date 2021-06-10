@@ -3,6 +3,7 @@
 	public class Deceased
 	{
 		public int total { get; set; }
+
 		public int last { get; set; }
 	}
 }
