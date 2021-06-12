@@ -6,6 +6,6 @@
 
 		public string Name { get; set; }
 
-		public RegionData regisonData { get; set; }
+		public RegionData RegisonData { get; set; }
 	}
 }

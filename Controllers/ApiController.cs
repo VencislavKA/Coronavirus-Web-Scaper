@@ -24,7 +24,7 @@ namespace Coronavirus_Web_Scaper.Controllers
         [HttpGet("data/regions")]
         public ActionResult<IEnumerable<Region>> GetRegions()
         {
-            return Mongo.GetRootobject(this.dbcollection).regions;
+            return Mongo.GetRootobject(this.dbcollection).Regions;
         }
         
     }

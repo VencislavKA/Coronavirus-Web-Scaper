@@ -2,8 +2,8 @@
 {
 	public class RegionData
 	{
-		public ConfirmedRegion confirmed { get; set; }
+		public ConfirmedRegion Confirmed { get; set; }
 
-		public VaccinatedRegion vaccinated { get; set; }
+		public VaccinatedRegion Vaccinated { get; set; }
 	}
 }

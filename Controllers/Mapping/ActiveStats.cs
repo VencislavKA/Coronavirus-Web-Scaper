@@ -2,8 +2,8 @@
 {
 	public class ActiveStats
 	{
-		public double hospitalized_per_active { get; set; }
+		public double Hospitalized_per_active { get; set; }
 
-		public double icu_per_hospitalized { get; set; }
+		public double Icu_per_hospitalized { get; set; }
 	}
 }

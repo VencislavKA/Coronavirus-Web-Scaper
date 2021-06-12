@@ -2,16 +2,16 @@
 {
 	public class Overall
 	{
-		public Tested tested { get; set; }
+		public TestedCountry Tested { get; set; }
 
-		public Confirmed confirmed { get; set; }
+		public ConfirmedCountry Confirmed { get; set; }
 
-		public Active active { get; set; }
+		public ActiveCountry Active { get; set; }
 
-		public Recovered recovered { get; set; }
+		public RecoveredCountry Recovered { get; set; }
 
-		public Deceased deceased { get; set; }
+		public DeceasedCountry Deceased { get; set; }
 
-		public Vaccinated vaccinated { get; set; }
+		public VaccinatedCountry Vaccinated { get; set; }
 	}
 }

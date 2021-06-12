@@ -38,7 +38,7 @@ namespace Coronavirus_Web_Scaper.Services
 
         private void UpdateInformation(object state)
 		{
-            var filter = Builders<Rootobject>.Filter.Eq("country", "BG");
+            var filter = Builders<Rootobject>.Filter.Eq("Country", "BG");
             dbcollection.DeleteOne(filter);
             dbcollection.InsertOne(GetValidatedDataFromSite());
         }
@@ -50,115 +50,115 @@ namespace Coronavirus_Web_Scaper.Services
             var doc2 = web.Load("https://coronavirus.bg/bg/statistika");
             Rootobject dataModel = new Rootobject()
             {
-                date = DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"),
-                date_scraped = DateTime.Now.ToString("u"),
-                country = "BG",
-                overall = new Overall()
+                Date = DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"),
+                Date_scraped = DateTime.Now.ToString("u"),
+                Country = "BG",
+                Overall = new Overall()
                 {
-                    tested = new Tested()
+                    Tested = new TestedCountry()
                     {
-                        total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[1]/p[1]"),
-                        last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[1]/p[3]"),
-                        total_by_type = new Total_By_Type_Of_Test()
+                        Total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[1]/p[1]"),
+                        Last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[1]/p[3]"),
+                        Total_by_type = new TotalByTypeOfTest()
                         {
-                            pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[2]/td[2]"),
-                            antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[1]/td[2]")
+                            Pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[2]/td[2]"),
+                            Antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[1]/td[2]")
                         },
-                        last_by_type = new Last_By_Type_Of_Test()
+                        Last_by_type = new LastByTypeOfTest()
                         {
-                            pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[1]/td[3]"),
-                            antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[2]/td[3]")
+                            Pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[1]/td[3]"),
+                            Antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[2]/td[3]")
                         }
                     },
-                    confirmed = new Confirmed()
+                    Confirmed = new ConfirmedCountry()
                     {
-                        total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[2]/p[1]"),
-                        last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[4]/div[1]/h1"),
-                        medical = new Medical()
+                        Total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[2]/p[1]"),
+                        Last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[4]/div[1]/h1"),
+                        Medical = new Medical()
                         {
-                            total = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[6]/td[2]"),
-                            total_by_type = new Total_By_Type_Of_Possition()
+                            Total = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[6]/td[2]"),
+                            Total_by_type = new TotalByTypeOfPossition()
                             {
-                                doctor = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[1]/td[2]"),
-                                nurces = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[2]/td[2]"),
-                                paramedics_1 = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[3]/td[2]"),
-                                paramedics_2 = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[4]/td[2]"),
-                                other = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[5]/td[2]"),
+                                Doctor = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[1]/td[2]"),
+                                Nurces = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[2]/td[2]"),
+                                Paramedics_1 = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[3]/td[2]"),
+                                Paramedics_2 = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[4]/td[2]"),
+                                Other = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[5]/td[2]"),
                             },
 
                         },
-                        total_by_type = new Total_By_Type_Of_Test()
+                        Total_by_type = new TotalByTypeOfTest()
                         {
-                            pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[1]/td[2]"),
-                            antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[2]/td[2]")
+                            Pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[1]/td[2]"),
+                            Antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[2]/td[2]")
                         },
-                        last_by_type = new Last_By_Type_Of_Test()
+                        Last_by_type = new LastByTypeOfTest()
                         {
-                            pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[1]/td[3]"),
-                            antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[2]/td[3]")
+                            Pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[1]/td[3]"),
+                            Antigen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[3]/tbody/tr[2]/td[3]")
                         }
                     },
-                    active = new Active()
+                    Active = new ActiveCountry()
                     {
-                        current = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[2]/p[3]"),
-                        current_by_type = new Current_By_Type()
+                        Current = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[2]/p[3]"),
+                        Current_by_type = new CurrentByType()
                         {
-                            hospitalized = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[4]/p[1]"),
-                            icu = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[4]/p[3]")
+                            Hospitalized = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[4]/p[1]"),
+                            Icu = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[4]/p[3]")
                         }
                     },
-                    recovered = new Recovered()
+                    Recovered = new RecoveredCountry()
                     {
-                        total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[3]/p[1]"),
-                        last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[3]/p[3]")
+                        Total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[3]/p[1]"),
+                        Last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[3]/p[3]")
                     },
-                    deceased = new Deceased()
+                    Deceased = new DeceasedCountry()
                     {
-                        total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[5]/p[1]"),
-                        last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[5]/p[3]")
+                        Total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[5]/p[1]"),
+                        Last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[5]/p[3]")
                     },
-                    vaccinated = new Vaccinated()
+                    Vaccinated = new VaccinatedCountry()
                     {
-                        total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[6]/p[1]"),
-                        total_completed = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[7]"),
-                        last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[6]/p[3]"),
-                        last_by_type = new Last_By_Type_Of_Vaccine()
+                        Total = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[6]/p[1]"),
+                        Total_completed = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[7]"),
+                        Last = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[6]/p[3]"),
+                        Last_by_type = new LastByTypeOfVaccine()
                         {
-                            astrazeneca = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[5]"),
-                            janssen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[6]"),
-                            moderna = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[4]"),
-                            pfeizer = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[3]")
+                            Astrazeneca = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[5]"),
+                            Janssen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[6]"),
+                            Moderna = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[4]"),
+                            Pfeizer = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[3]")
                         }
                     },
                 },
             };
-            dataModel.regions = new List<Region>();
-            string[] nameByEKATTE = Enum.GetNames(typeof(NameByЕКАТТЕ));
+            dataModel.Regions = new List<Region>();
+            string[] nameByEKATTE = Enum.GetNames(typeof(NameByEkatte));
             for (int i = 1; i <= 28; i++)
             {
-                dataModel.regions.Add(new Region()
+                dataModel.Regions.Add(new Region()
                 {
                     Name = doc2.DocumentNode.SelectNodes("/html/body/main/div[3]/div/div[1]/div[2]/table/tbody/tr[" + i + "]/td[1]").FirstOrDefault().InnerText,
                     NameByЕКАТТЕ = nameByEKATTE[i - 1],
-                    regisonData = new RegionData()
+                    RegisonData = new RegionData()
                     {
-                        confirmed = new ConfirmedRegion()
+                        Confirmed = new ConfirmedRegion()
                         {
-                            total = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[2]/table/tbody/tr[" + i + "]/td[2]"),
-                            last = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[2]/table/tbody/tr[" + i + "]/td[3]")
+                            Total = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[2]/table/tbody/tr[" + i + "]/td[2]"),
+                            Last = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[2]/table/tbody/tr[" + i + "]/td[3]")
                         },
-                        vaccinated = new VaccinatedRegion()
+                        Vaccinated = new VaccinatedRegion()
                         {
-                            total = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[2]"),
-                            total_completed = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[7]"),
-                            last_by_type = new Last_By_Type_Of_Vaccine()
+                            Total = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[2]"),
+                            Total_completed = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[7]"),
+                            Last_by_type = new LastByTypeOfVaccine()
                             {
-                                pfeizer = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[3]"),
-                                moderna = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[4]"),
-                                astrazeneca = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[5]"),
-                                janssen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[6]")
+                                Pfeizer = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[3]"),
+                                Moderna = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[4]"),
+                                Astrazeneca = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[5]"),
+                                Janssen = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[6]")
                             },
-                            last = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[3]")
+                            Last = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[3]")
                             + ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[4]")
                             + ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[5]")
                             + ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[" + i + "]/td[6]")
@@ -166,41 +166,41 @@ namespace Coronavirus_Web_Scaper.Services
                     }
                 });
             }
-            dataModel.stats = new Stats()
+            dataModel.Stats = new Stats()
             {
-                tested = new TestedStats()
+                Tested = new TestedStats()
                 {
-                    total_by_type_prc = new Total_By_Type_Of_Test_Stats()
+                    Total_by_type_prc = new TotalByTypeOfTestStats()
                     {
-                        pcr = Math.Round((double)dataModel.overall.tested.total_by_type.pcr / dataModel.overall.tested.total * 100, 2),
-                        antigen = Math.Round((double)dataModel.overall.tested.total_by_type.antigen / dataModel.overall.tested.total * 100, 2)
+                        Pcr = Math.Round((double)dataModel.Overall.Tested.Total_by_type.Pcr / dataModel.Overall.Tested.Total * 100, 2),
+                        Antigen = Math.Round((double)dataModel.Overall.Tested.Total_by_type.Antigen / dataModel.Overall.Tested.Total * 100, 2)
                     },
-                    last_by_type_prc = new Last_By_Type_Of_Test_Stats()
+                    Last_by_type_prc = new LastByTypeOfTestStats()
                     {
-                        pcr = Math.Round((double)dataModel.overall.tested.last_by_type.pcr / dataModel.overall.tested.last * 100, 2),
-                        antigen = Math.Round((double)dataModel.overall.tested.last_by_type.antigen / dataModel.overall.tested.last * 100, 2)
+                        Pcr = Math.Round((double)dataModel.Overall.Tested.Last_by_type.Pcr / dataModel.Overall.Tested.Last * 100, 2),
+                        Antigen = Math.Round((double)dataModel.Overall.Tested.Last_by_type.Antigen / dataModel.Overall.Tested.Last * 100, 2)
                     }
                 },
-                confirmed = new ConfirmedStats()
+                Confirmed = new ConfirmedStats()
                 {
-                    total_per_tested_prc = Math.Round((double)dataModel.overall.confirmed.total / dataModel.overall.tested.total * 100, 2),
-                    last_per_tested_prc = Math.Round((double)dataModel.overall.confirmed.last / dataModel.overall.tested.last * 100, 2),
-                    total_by_type_prc = new Total_By_Type_Of_Test_Stats()
+                    Total_per_tested_prc = Math.Round((double)dataModel.Overall.Confirmed.Total / dataModel.Overall.Tested.Total * 100, 2),
+                    Last_per_tested_prc = Math.Round((double)dataModel.Overall.Confirmed.Last / dataModel.Overall.Tested.Last * 100, 2),
+                    Total_by_type_prc = new TotalByTypeOfTestStats()
                     {
-                        pcr = Math.Round((double)dataModel.overall.confirmed.total / dataModel.overall.tested.total_by_type.pcr * 100, 2),
-                        antigen = Math.Round((double)dataModel.overall.confirmed.total / dataModel.overall.tested.total_by_type.antigen * 100, 2)
+                        Pcr = Math.Round((double)dataModel.Overall.Confirmed.Total / dataModel.Overall.Tested.Total_by_type.Pcr * 100, 2),
+                        Antigen = Math.Round((double)dataModel.Overall.Confirmed.Total / dataModel.Overall.Tested.Total_by_type.Antigen * 100, 2)
                     },
-                    last_by_type_prc = new Last_By_Type_Of_Test_Stats()
+                    Last_by_type_prc = new LastByTypeOfTestStats()
                     {
-                        pcr = Math.Round((double)dataModel.overall.confirmed.last / dataModel.overall.tested.last_by_type.pcr * 100, 2),
-                        antigen = Math.Round((double)dataModel.overall.confirmed.last / dataModel.overall.tested.last_by_type.antigen * 100, 2)
+                        Pcr = Math.Round((double)dataModel.Overall.Confirmed.Last / dataModel.Overall.Tested.Last_by_type.Pcr * 100, 2),
+                        Antigen = Math.Round((double)dataModel.Overall.Confirmed.Last / dataModel.Overall.Tested.Last_by_type.Antigen * 100, 2)
                     },
-                    medical_prc = Math.Round((double)dataModel.overall.confirmed.medical.total / dataModel.overall.confirmed.total * 100, 2)
+                    Medical_prc = Math.Round((double)dataModel.Overall.Confirmed.Medical.Total / dataModel.Overall.Confirmed.Total * 100, 2)
                 },
-                active = new ActiveStats()
+                Active = new ActiveStats()
                 {
-                    hospitalized_per_active = Math.Round((double)dataModel.overall.active.current_by_type.hospitalized / dataModel.overall.active.current * 100, 2),
-                    icu_per_hospitalized = Math.Round((double)dataModel.overall.active.current_by_type.icu / dataModel.overall.active.current * 100, 2)
+                    Hospitalized_per_active = Math.Round((double)dataModel.Overall.Active.Current_by_type.Hospitalized / dataModel.Overall.Active.Current * 100, 2),
+                    Icu_per_hospitalized = Math.Round((double)dataModel.Overall.Active.Current_by_type.Icu / dataModel.Overall.Active.Current * 100, 2)
                 }
             };
 
@@ -220,32 +220,32 @@ namespace Coronavirus_Web_Scaper.Services
 
         private static bool ValidateModelData(Rootobject rootobject)
         {
-            var testedLast = rootobject.overall.tested.last;
-            var lastTypesSum = rootobject.overall.tested.last_by_type.pcr + rootobject.overall.tested.last_by_type.antigen;
+            var testedLast = rootobject.Overall.Tested.Last;
+            var lastTypesSum = rootobject.Overall.Tested.Last_by_type.Pcr + rootobject.Overall.Tested.Last_by_type.Antigen;
             if (testedLast != lastTypesSum)
             {
                 return false;
             }
-            var totatlConfirmedLast = rootobject.overall.confirmed.last;
-            var lastConfirmedTypesSum = rootobject.overall.confirmed.last_by_type.antigen + rootobject.overall.confirmed.last_by_type.pcr;
+            var totatlConfirmedLast = rootobject.Overall.Confirmed.Last;
+            var lastConfirmedTypesSum = rootobject.Overall.Confirmed.Last_by_type.Antigen + rootobject.Overall.Confirmed.Last_by_type.Pcr;
             if (totatlConfirmedLast != lastConfirmedTypesSum)
             {
                 return false;
             }
             var RegionsLastSum = 0;
-            foreach (var item in rootobject.regions)
+            foreach (var item in rootobject.Regions)
             {
-                RegionsLastSum += item.regisonData.confirmed.last;
+                RegionsLastSum += item.RegisonData.Confirmed.Last;
             }
             if (totatlConfirmedLast != RegionsLastSum)
             {
                 return false;
             }
-            var vacinatedLast = rootobject.overall.vaccinated.last;
-            var lastVacinatedByTypesSum = rootobject.overall.vaccinated.last_by_type.astrazeneca
-                + rootobject.overall.vaccinated.last_by_type.janssen
-                + rootobject.overall.vaccinated.last_by_type.moderna
-                + rootobject.overall.vaccinated.last_by_type.pfeizer;
+            var vacinatedLast = rootobject.Overall.Vaccinated.Last;
+            var lastVacinatedByTypesSum = rootobject.Overall.Vaccinated.Last_by_type.Astrazeneca
+                + rootobject.Overall.Vaccinated.Last_by_type.Janssen
+                + rootobject.Overall.Vaccinated.Last_by_type.Moderna
+                + rootobject.Overall.Vaccinated.Last_by_type.Pfeizer;
             if (vacinatedLast != lastVacinatedByTypesSum)
             {
                 return false;

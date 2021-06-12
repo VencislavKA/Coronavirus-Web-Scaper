@@ -2,12 +2,12 @@
 {
 	public class Medical
 	{
-		public int total { get; set; }
+		public int Total { get; set; }
 
-		public Total_By_Type_Of_Possition total_by_type { get; set; }
+		public TotalByTypeOfPossition Total_by_type { get; set; }
 
-		public int last { get; set; }
+		public int Last { get; set; }
 
-		public Last_By_Type_Of_Possition last_by_type { get; set; }
+		public LastByTypeOfPossition Last_by_type { get; set; }
 	}
 }

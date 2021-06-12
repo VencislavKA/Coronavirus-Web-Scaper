@@ -12,18 +12,18 @@ namespace Coronavirus_Web_Scaper.Controllers.Mapping
 	/// </summary>
 	public class Rootobject
 	{
-		public int Id { get; set; }
+		public object Id { get; set; }
 
-		public string date { get; set; }
+		public string Date { get; set; }
 
-		public string date_scraped { get; set; }
+		public string Date_scraped { get; set; }
 
-		public string country { get; set; }
+		public string Country { get; set; }
 
-		public Overall overall { get; set; }
+		public Overall Overall { get; set; }
 
-		public List<Region> regions { get; set; }
+		public List<Region> Regions { get; set; }
 
-		public Stats stats { get; set; }
+		public Stats Stats { get; set; }
 	}
 }
