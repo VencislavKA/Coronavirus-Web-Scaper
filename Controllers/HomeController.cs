@@ -19,10 +19,11 @@ namespace Coronavirus_Web_Scaper.Controllers
 	{
 		private readonly ILogger<HomeController> _logger;
 
-		private IMongoCollection<Rootobject> dbcollection = Mongo.GetCollection();
+		private IMongoCollection<Rootobject> dbcollection;
 
 		public HomeController(ILogger<HomeController> logger)
 		{
+			dbcollection = Mongo.GetCollection();
 			_logger = logger;
 		}
 
@@ -33,7 +34,8 @@ namespace Coronavirus_Web_Scaper.Controllers
 		/// <returns>I return the View that refers to tha name of the method</returns>
 		public IActionResult Index()
 		{
-			var data = Mongo.GetRootobject(dbcollection);
+			var collection = Mongo.GetCollection();
+			var data = Mongo.GetRootobject(collection);
 			if (data == null)
 			{
 				return this.Error();

@@ -24,7 +24,7 @@ namespace Coronavirus_Web_Scaper.Services
             UpdateInformation,
             null,
             TimeSpan.Zero,
-            TimeSpan.FromSeconds(60)
+            TimeSpan.FromHours(24)
             );
             return Task.CompletedTask;
         }
