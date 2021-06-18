@@ -2,10 +2,10 @@
 {
 	public class Stats
 	{
-		public TestedStats Tested { get; set; }
+		public TestedStats tested { get; set; }
 
-		public ConfirmedStats Confirmed { get; set; }
+		public ConfirmedStats confirmed { get; set; }
 
-		public ActiveStats Active { get; set; }
+		public ActiveStats active { get; set; }
 	}
 }

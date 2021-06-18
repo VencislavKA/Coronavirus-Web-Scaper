@@ -2,8 +2,8 @@
 {
 	public class ConfirmedRegion
 	{
-		public int Total { get; set; }
+		public int total { get; set; }
 
-		public int Last { get; set; }
+		public int last { get; set; }
 	}
 }

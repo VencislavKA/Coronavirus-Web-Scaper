@@ -34,8 +34,8 @@ namespace Coronavirus_Web_Scaper.Controllers
 		/// <returns>I return the View that refers to tha name of the method</returns>
 		public IActionResult Index()
 		{
-			var col = Mongo.GetCollection();
-			var data = Mongo.GetRootobject(col);
+			var collection = Mongo.GetCollection();
+			var data = Mongo.GetRootobject(collection);
 			if (data == null)
 			{
 				return this.Error();
@@ -51,7 +51,7 @@ namespace Coronavirus_Web_Scaper.Controllers
 		public IActionResult RegionData(string name)
 		{
 			var rootobject = Mongo.GetRootobject(dbcollection);
-			var region = rootobject.Regions.Where(x => x.NameByЕКАТТЕ == name).FirstOrDefault();
+			var region = rootobject.regions.Where(x => x.NameByЕКАТТЕ == name).FirstOrDefault();
 			return this.View(region);
 		}
 

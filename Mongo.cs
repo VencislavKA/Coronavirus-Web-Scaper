@@ -24,7 +24,7 @@ namespace Coronavirus_Web_Scaper
 
 		public static Rootobject GetRootobject(IMongoCollection<Rootobject> collection)
 		{
-			var filter = Builders<Rootobject>.Filter.Eq("Country", "BG");
+			var filter = Builders<Rootobject>.Filter.Eq("country", "BG");
 			return collection.Find(filter).FirstOrDefault();
 		}
     }

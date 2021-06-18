@@ -2,12 +2,12 @@
 {
 	public class VaccinatedRegion
 	{
-		public int Total { get; set; }
+		public int total { get; set; }
 
-		public object Last { get; set; }
+		public object last { get; set; }
 
-		public LastByTypeOfVaccine Last_by_type { get; set; }
+		public Last_By_Type_Of_Vaccine last_by_type { get; set; }
 
-		public int Total_completed { get; set; }
+		public int total_completed { get; set; }
 	}
 }
