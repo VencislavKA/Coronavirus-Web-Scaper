@@ -16,17 +16,6 @@ namespace Coronavirus_Web_Scaper
 {
     public class Program
     {
-        private static IMongoCollection<Rootobject> dbcollection = Mongo.GetCollection();
-        /// <summary>
-        /// Creting timer to know wnen to update the information in the database.
-        /// </summary>
-        //static Timer timer = new Timer(86400000);
-        static Timer timer = new Timer(10000);
-        /// <summary>
-        /// In the main method I check if there is a record in the database. If there is not I create it. 
-        /// After that I start the timer with atached event on it to update the information in the database.
-        /// </summary>
-        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

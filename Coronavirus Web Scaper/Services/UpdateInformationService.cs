@@ -26,6 +26,8 @@ namespace Coronavirus_Web_Scaper.Services
             TimeSpan.Zero,
             TimeSpan.FromHours(24)
             );
+
+			
             return Task.CompletedTask;
         }
 
@@ -39,8 +41,7 @@ namespace Coronavirus_Web_Scaper.Services
         private void UpdateInformation(object state)
 		{
             var filter = Builders<Rootobject>.Filter.Eq("Country", "BG");
-            dbcollection.DeleteOne(filter);
-            dbcollection.InsertOne(GetValidatedDataFromSite());
+            dbcollection.ReplaceOne(filter, GetValidatedDataFromSite());
         }
 
         private static Rootobject GetValidatedDataFromSite()

@@ -10,8 +10,6 @@ namespace Coronavirus_Web_Scaper
 {
 	public static class Mongo
 	{
-		private static Rootobject CacheRootobject { get; set; }
-
 		public static IMongoCollection<Rootobject> GetCollection()
 		{
 			var config = new ConfigurationBuilder()
