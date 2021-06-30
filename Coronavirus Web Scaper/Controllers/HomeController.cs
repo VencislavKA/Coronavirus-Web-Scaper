@@ -1,6 +1,5 @@
 ﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using System.Diagnostics;
 using System.Linq;
