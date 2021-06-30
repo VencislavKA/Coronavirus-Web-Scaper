@@ -9,14 +9,11 @@ namespace Coronavirus_Web_Scaper.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> logger;
-
 		private readonly IMongoCollection<Rootobject> dbcollection;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController()
 		{
 			dbcollection = Mongo.GetCollection();
-			this.logger = logger;
 		}
 
 		/// <summary>
