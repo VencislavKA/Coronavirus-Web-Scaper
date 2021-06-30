@@ -2,8 +2,6 @@
 {
 	public class ConfirmedCountry
 	{
-		internal int total;
-
 		public int Total { get; set; }
 
 		public TotalByTypeOfTest Total_by_type { get; set; }

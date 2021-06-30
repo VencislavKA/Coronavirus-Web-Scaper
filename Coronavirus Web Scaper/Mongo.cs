@@ -1,10 +1,7 @@
 ﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
-using Coronavirus_Web_Scaper.Models;
 using Microsoft.Extensions.Configuration;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
-using System.Configuration;
 
 namespace Coronavirus_Web_Scaper
 {

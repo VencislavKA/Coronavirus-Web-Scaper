@@ -1,30 +1,22 @@
 ﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
-using Coronavirus_Web_Scaper.Models;
-using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Timers;
 
 namespace Coronavirus_Web_Scaper.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ILogger<HomeController> logger;
 
-		private IMongoCollection<Rootobject> dbcollection;
+		private readonly IMongoCollection<Rootobject> dbcollection;
 
 		public HomeController(ILogger<HomeController> logger)
 		{
 			dbcollection = Mongo.GetCollection();
-			_logger = logger;
+			this.logger = logger;
 		}
 
 		/// <summary>

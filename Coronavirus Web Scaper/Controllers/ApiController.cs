@@ -1,11 +1,7 @@
 ﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Coronavirus_Web_Scaper.Controllers
 {
@@ -13,7 +9,7 @@ namespace Coronavirus_Web_Scaper.Controllers
 	[ApiController]
 	public class ApiController : ControllerBase
 	{
-        private IMongoCollection<Rootobject> dbcollection = Mongo.GetCollection();
+        private readonly IMongoCollection<Rootobject> dbcollection = Mongo.GetCollection();
 
         [HttpGet("data/all")]
         public ActionResult<Rootobject> GetAll()
@@ -26,6 +22,5 @@ namespace Coronavirus_Web_Scaper.Controllers
         {
             return Mongo.GetRootobject(this.dbcollection).Regions;
         }
-        
     }
 }

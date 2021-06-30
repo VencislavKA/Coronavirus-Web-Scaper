@@ -16,7 +16,7 @@ namespace Coronavirus_Web_Scaper.Services
 
         private Timer timer;
 
-        private IMongoCollection<Rootobject> dbcollection = Mongo.GetCollection();
+        private readonly IMongoCollection<Rootobject> dbcollection = Mongo.GetCollection();
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
@@ -46,10 +46,10 @@ namespace Coronavirus_Web_Scaper.Services
 
         private static Rootobject GetValidatedDataFromSite()
         {
-            HtmlWeb web = new HtmlWeb();
+            HtmlWeb web = new();
             var doc = web.Load("https://coronavirus.bg");
             var doc2 = web.Load("https://coronavirus.bg/bg/statistika");
-            Rootobject dataModel = new Rootobject()
+            Rootobject dataModel = new()
             {
                 Date = DateTime.Now.ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffffffzzz"),
                 Date_scraped = DateTime.Now.ToString("u"),
@@ -214,9 +214,8 @@ namespace Coronavirus_Web_Scaper.Services
 
         private static int ValidateNumber(HtmlDocument doc, string pathern)
         {
-            int parsed = 0;
-            int.TryParse(doc.DocumentNode.SelectNodes(pathern).FirstOrDefault().InnerText.Replace(" ", string.Empty), out parsed);
-            return parsed;
+			_ = int.TryParse(doc.DocumentNode.SelectNodes(pathern).FirstOrDefault().InnerText.Replace(" ", string.Empty), out int parsed);
+			return parsed;
         }
 
         private static bool ValidateModelData(Rootobject rootobject)

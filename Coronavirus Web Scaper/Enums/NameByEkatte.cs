@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Coronavirus_Web_Scaper.Models
+﻿namespace Coronavirus_Web_Scaper.Models
 {	
 	/// <summary>
 	/// This is a enumeration that has in it all names of the regions that are in Bulgaria
