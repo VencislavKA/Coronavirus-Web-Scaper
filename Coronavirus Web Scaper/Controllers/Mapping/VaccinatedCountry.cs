@@ -6,8 +6,8 @@
 
 		public int Last { get; set; }
 
-		public LastByTypeOfVaccine Last_by_type { get; set; }
+		public LastByTypeOfVaccine LastByType { get; set; }
 
-		public int Total_completed { get; set; }
+		public int TotalCompleted { get; set; }
 	}
 }

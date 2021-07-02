@@ -2,14 +2,14 @@
 {
 	public class ConfirmedStats
 	{
-		public double Total_per_tested_prc { get; set; }
+		public double TotalPerTestedPrc { get; set; }
 
-		public double Last_per_tested_prc { get; set; }
+		public double LastPerTestedPrc { get; set; }
 
-		public TotalByTypeOfTestStats Total_by_type_prc { get; set; }
+		public TotalByTypeOfTestStats TotalByTypePrc { get; set; }
 
-		public LastByTypeOfTestStats Last_by_type_prc { get; set; }
+		public LastByTypeOfTestStats LastByTypePrc { get; set; }
 
-		public double Medical_prc { get; set; }
+		public double MedicalPrc { get; set; }
 	}
 }

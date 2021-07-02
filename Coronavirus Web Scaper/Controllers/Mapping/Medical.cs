@@ -4,10 +4,10 @@
 	{
 		public int Total { get; set; }
 
-		public TotalByTypeOfPossition Total_by_type { get; set; }
+		public TotalByTypeOfPossition TotalByType { get; set; }
 
 		public int Last { get; set; }
 
-		public LastByTypeOfPossition Last_by_type { get; set; }
+		public LastByTypeOfPossition LastByType { get; set; }
 	}
 }

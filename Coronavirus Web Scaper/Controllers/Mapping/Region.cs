@@ -2,7 +2,7 @@
 {
 	public class Region
 	{
-		public string NameByЕКАТТЕ { get; set; }
+		public string NameByЕkatte { get; set; }
 
 		public string Name { get; set; }
 

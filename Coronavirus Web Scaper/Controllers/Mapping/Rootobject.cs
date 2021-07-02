@@ -10,13 +10,18 @@ namespace Coronavirus_Web_Scaper.Controllers.Mapping
 	/// <summary>
 	/// Here is my Rootobject that help to map the data betwean the database and my clases that i can work with.
 	/// </summary>
-	public class Rootobject
+	public class RootObject
 	{
-		public object Id { get; set; }
+		public RootObject()
+		{
+			this.Id = Guid.NewGuid().ToString();
+		}
 
-		public string Date { get; set; }
+		public string Id { get; set; }
 
-		public string Date_scraped { get; set; }
+		public DateTime Date { get; set; }
+
+		public DateTime DateScraped { get; set; }
 
 		public string Country { get; set; }
 

@@ -3,16 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.Diagnostics;
 using System.Linq;
+using Coronavirus_Web_Scaper.Services;
 
 namespace Coronavirus_Web_Scaper.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IMongoCollection<Rootobject> dbcollection;
+		IMongoService Mongo { get; }
 
-		public HomeController()
+		public HomeController(IMongoService mongo)
 		{
-			dbcollection = Mongo.GetCollection();
+			Mongo = mongo;
 		}
 
 		/// <summary>
@@ -22,8 +23,7 @@ namespace Coronavirus_Web_Scaper.Controllers
 		/// <returns>I return the View that refers to tha name of the method</returns>
 		public IActionResult Index()
 		{
-			var col = Mongo.GetCollection();
-			var data = Mongo.GetRootobject(col);
+			var data = Mongo.GetRootobject();
 			if (data == null)
 			{
 				return this.Error();
@@ -38,8 +38,8 @@ namespace Coronavirus_Web_Scaper.Controllers
 		/// <returns>Returns a view with that data for it in the format of class Region</returns>
 		public IActionResult RegionData(string name)
 		{
-			var rootobject = Mongo.GetRootobject(dbcollection);
-			var region = rootobject.Regions.Where(x => x.NameByЕКАТТЕ == name).FirstOrDefault();
+			var rootobject = Mongo.GetRootobject();
+			var region = rootobject.Regions.Where(x => x.NameByЕkatte == name).FirstOrDefault();
 			return this.View(region);
 		}
 

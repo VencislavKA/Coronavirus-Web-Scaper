@@ -4,10 +4,10 @@
 	{
 		public int Total { get; set; }
 
-		public TotalByTypeOfTest Total_by_type { get; set; }
+		public TotalByTypeOfTest TotalByType { get; set; }
 
 		public int Last { get; set; }
 
-		public LastByTypeOfTest Last_by_type { get; set; }
+		public LastByTypeOfTest LastByType { get; set; }
 	}
 }

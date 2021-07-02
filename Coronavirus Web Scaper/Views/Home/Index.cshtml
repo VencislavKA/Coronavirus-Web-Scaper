@@ -1,4 +1,4 @@
-﻿@model Rootobject
+﻿@model RootObject
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -110,8 +110,8 @@
                                         @Model.Overall.Confirmed.Last
                                     </h5>
                                     <div class="mt-4">
-                                        <p>by antigen: @Model.Overall.Confirmed.Last_by_type.Antigen</p>
-                                        <p>by PCR: @Model.Overall.Confirmed.Last_by_type.Pcr</p>
+                                        <p>by antigen: @Model.Overall.Confirmed.LastByType.Antigen</p>
+                                        <p>by PCR: @Model.Overall.Confirmed.LastByType.Pcr</p>
                                     </div>
                                 </div>
                             </div>
@@ -131,8 +131,8 @@
                                         @Model.Overall.Confirmed.Total
                                     </h5>
                                     <div class="mt-4">
-                                        <p>by antigen: @Model.Overall.Confirmed.Total_by_type.Antigen</p>
-                                        <p>by PCR: @Model.Overall.Confirmed.Total_by_type.Pcr</p>
+                                        <p>by antigen: @Model.Overall.Confirmed.TotalByType.Antigen</p>
+                                        <p>by PCR: @Model.Overall.Confirmed.TotalByType.Pcr</p>
                                     </div>
                                 </div>
                             </div>
@@ -152,10 +152,10 @@
                                         @Model.Overall.Vaccinated.Last
                                     </h5>
                                     <div class="mt-4">
-                                        <p>astrazeneca: @Model.Overall.Vaccinated.Last_by_type.Astrazeneca</p>
-                                        <p>janssen: @Model.Overall.Vaccinated.Last_by_type.Janssen</p>
-                                        <p>moderna: @Model.Overall.Vaccinated.Last_by_type.Moderna</p>
-                                        <p>pfeizer: @Model.Overall.Vaccinated.Last_by_type.Pfeizer</p>
+                                        <p>astrazeneca: @Model.Overall.Vaccinated.LastByType.Astrazeneca</p>
+                                        <p>janssen: @Model.Overall.Vaccinated.LastByType.Janssen</p>
+                                        <p>moderna: @Model.Overall.Vaccinated.LastByType.Moderna</p>
+                                        <p>pfeizer: @Model.Overall.Vaccinated.LastByType.Pfeizer</p>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-10">
                                     <h5 class="d-flex align-items-center mb-0">
-                                        @Model.Overall.Vaccinated.Total_completed
+                                        @Model.Overall.Vaccinated.TotalCompleted
                                     </h5>
                                 </div>
                             </div>
@@ -212,15 +212,15 @@
                                         <h5 class="d-flex align-items-center mb-0">
                                             Total: @Model.Overall.Tested.Last
                                         </h5>
-                                        <p>by antigen:@Model.Overall.Tested.Total_by_type.Antigen</p>
-                                        <p>by PCR:@Model.Overall.Tested.Total_by_type.Pcr</p>
+                                        <p>by antigen:@Model.Overall.Tested.TotalByType.Antigen</p>
+                                        <p>by PCR:@Model.Overall.Tested.TotalByType.Pcr</p>
                                     </div>
                                     <div>
                                         <h5 class="d-flex align-items-center mb-0">
                                             New: @Model.Overall.Tested.Last
                                         </h5>
-                                        <p>by antigen:@Model.Overall.Tested.Last_by_type.Antigen</p>
-                                        <p>by PCR:@Model.Overall.Tested.Last_by_type.Pcr</p>
+                                        <p>by antigen:@Model.Overall.Tested.LastByType.Antigen</p>
+                                        <p>by PCR:@Model.Overall.Tested.LastByType.Pcr</p>
                                     </div>
                                 </div>
                             </div>
@@ -259,11 +259,11 @@
                                     <h5 class="d-flex align-items-center mb-0">
                                         Total: @Model.Overall.Confirmed.Medical.Total
                                     </h5>
-                                    <p>doctors:@Model.Overall.Confirmed.Medical.Total_by_type.Doctor</p>
-                                    <p>nurses:@Model.Overall.Confirmed.Medical.Total_by_type.Nurces</p>
-                                    <p>paramedics:@Model.Overall.Confirmed.Medical.Total_by_type.Paramedics_1</p>
-                                    <p>paramedics2:@Model.Overall.Confirmed.Medical.Total_by_type.Paramedics_2</p>
-                                    <p>other:@Model.Overall.Confirmed.Medical.Total_by_type.Other</p>
+                                    <p>doctors:@Model.Overall.Confirmed.Medical.TotalByType.Doctor</p>
+                                    <p>nurses:@Model.Overall.Confirmed.Medical.TotalByType.Nurces</p>
+                                    <p>paramedics:@Model.Overall.Confirmed.Medical.TotalByType.Paramedics1</p>
+                                    <p>paramedics2:@Model.Overall.Confirmed.Medical.TotalByType.Paramedics2</p>
+                                    <p>other:@Model.Overall.Confirmed.Medical.TotalByType.Other</p>
                                 </div>
                             </div>
                         </div>
@@ -287,11 +287,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Tested.Total_by_type_prc.Pcr % </span>
+                                    <span>@Model.Stats.Tested.TotalByTypePrc.Pcr % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="%" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Tested.Total_by_type_prc.Pcr%;"></div>
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="%" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Tested.TotalByTypePrc.Pcr%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 mt-4 d-flex">
                                 <div class="col-8">
@@ -300,11 +300,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Tested.Total_by_type_prc.Antigen % </span>
+                                    <span>@Model.Stats.Tested.TotalByTypePrc.Antigen % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="@Model.Stats.Tested.Total_by_type_prc.Antigen%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Tested.Total_by_type_prc.Antigen%;"></div>
+                                <div class="progress-bar l-bg-cyan" role="progressbar" data-width="@Model.Stats.Tested.TotalByTypePrc.Antigen%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Tested.TotalByTypePrc.Antigen%;"></div>
                             </div>
                         </div>
                     </div>
@@ -322,11 +322,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Confirmed.Total_per_tested_prc % </span>
+                                    <span>@Model.Stats.Confirmed.TotalPerTestedPrc % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.Total_per_tested_prc%;"></div>
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.TotalPerTestedPrc%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -335,11 +335,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Confirmed.Last_per_tested_prc % </span>
+                                    <span>@Model.Stats.Confirmed.LastPerTestedPrc % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.Last_per_tested_prc%;"></div>
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.LastPerTestedPrc%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -348,11 +348,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Confirmed.Total_by_type_prc.Pcr % </span>
+                                    <span>@Model.Stats.Confirmed.TotalByTypePrc.Pcr % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.Total_by_type_prc.Pcr%;"></div>
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.TotalByTypePrc.Pcr%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -361,11 +361,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Confirmed.Total_by_type_prc.Antigen % </span>
+                                    <span>@Model.Stats.Confirmed.TotalByTypePrc.Antigen % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.Total_by_type_prc.Antigen%;"></div>
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.TotalByTypePrc.Antigen%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -374,11 +374,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Confirmed.Last_by_type_prc.Pcr % </span>
+                                    <span>@Model.Stats.Confirmed.LastByTypePrc.Pcr % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.Last_by_type_prc.Pcr%;"></div>
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.LastByTypePrc.Pcr%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -387,11 +387,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Confirmed.Last_by_type_prc.Antigen % </span>
+                                    <span>@Model.Stats.Confirmed.LastByTypePrc.Antigen % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.Last_by_type_prc.Antigen%;"></div>
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.LastByTypePrc.Antigen%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -400,11 +400,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Confirmed.Medical_prc % </span>
+                                    <span>@Model.Stats.Confirmed.MedicalPrc % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.Medical_prc%;"></div>
+                                <div class="progress-bar l-bg-green" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Confirmed.MedicalPrc%;"></div>
                             </div>
                         </div>
                     </div>
@@ -422,11 +422,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Active.Hospitalized_per_active % </span>
+                                    <span>@Model.Stats.Active.HospitalizedPerActive % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 mb-2" data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Active.Hospitalized_per_active%;"></div>
+                                <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Active.HospitalizedPerActive%;"></div>
                             </div>
                             <div class="row align-items-center mb-2 d-flex">
                                 <div class="col-8">
@@ -435,11 +435,11 @@
                                     </h5>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <span>@Model.Stats.Active.Icu_per_hospitalized % </span>
+                                    <span>@Model.Stats.Active.IcuPerHospitalized % </span>
                                 </div>
                             </div>
                             <div class="progress mt-1 " data-height="8" style="height: 8px;">
-                                <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Active.Icu_per_hospitalized%;"></div>
+                                <div class="progress-bar l-bg-orange" role="progressbar" data-width="25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Stats.Active.IcuPerHospitalized%;"></div>
                             </div>
                         </div>
                     </div>

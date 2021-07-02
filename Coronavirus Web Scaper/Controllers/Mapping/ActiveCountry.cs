@@ -4,6 +4,6 @@
 	{
 		public int Current { get; set; }
 
-		public CurrentByType Current_by_type { get; set; }
+		public CurrentByType CurrentByType { get; set; }
 	}
 }
