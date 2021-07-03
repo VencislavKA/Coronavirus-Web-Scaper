@@ -1,9 +1,9 @@
 ﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
+using Coronavirus_Web_Scaper.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.Diagnostics;
 using System.Linq;
-using Coronavirus_Web_Scaper.Services;
 
 namespace Coronavirus_Web_Scaper.Controllers
 {

@@ -1,8 +1,8 @@
 ﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using System;
 using MongoDB.Driver.Linq;
+using System;
 
 namespace Coronavirus_Web_Scaper.Services
 {
@@ -23,6 +23,6 @@ namespace Coronavirus_Web_Scaper.Services
 		public IMongoCollection<RootObject> GetCollection() => mongoCollection;
 
 		public RootObject GetRootobject() => mongoCollection.AsQueryable().OrderByDescending(x => x.DateScraped).First();
-		
-    }
+
+	}
 }
