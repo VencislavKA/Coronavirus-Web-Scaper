@@ -30,15 +30,12 @@ namespace Coronavirus_Web_Scaper.Services
 			TimeSpan.Zero,
 			TimeSpan.FromHours(24)
 			);
-
-
 			return Task.CompletedTask;
 		}
 
 		public Task StopAsync(CancellationToken cancellationToken)
 		{
 			timer?.Change(Timeout.Infinite, 0);
-
 			return Task.CompletedTask;
 		}
 
@@ -212,6 +209,7 @@ namespace Coronavirus_Web_Scaper.Services
 			{
 				return null;
 			}
+
 			return dataModel;
 		}
 

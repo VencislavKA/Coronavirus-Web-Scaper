@@ -15,12 +15,7 @@ namespace Coronavirus_Web_Scaper.Controllers
 		{
 			Mongo = mongo;
 		}
-
-		/// <summary>
-		/// This is a method for my index page in the site.
-		/// Here I get data from the database and put it in the view.
-		/// </summary>
-		/// <returns>I return the View that refers to tha name of the method</returns>
+		
 		public IActionResult Index()
 		{
 			var data = Mongo.GetRootobject();
@@ -30,12 +25,7 @@ namespace Coronavirus_Web_Scaper.Controllers
 			}
 			return this.View(data);
 		}
-
-		/// <summary>
-		/// In this method I get the region from the database by its id and send it to the view
-		/// </summary>
-		/// <param name="id">This id refers to the id of every region in my database.</param>
-		/// <returns>Returns a view with that data for it in the format of class Region</returns>
+		
 		public IActionResult RegionData(string name)
 		{
 			var rootobject = Mongo.GetRootobject();
