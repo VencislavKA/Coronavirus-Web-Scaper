@@ -13,4 +13,4 @@ The information is stored in the MongoDB database that is made for this. Every u
 This service helps to connect to the database.
 
 ### UpdateInformationService
-This service collects the information from the site (https://coronavirus.bg) on every 24 hours and adds it in to the database. It works on hosted service.
+This service collects the information every 24 hours from the site (https://coronavirus.bg) and adds it to the database. It works on hosted service.
