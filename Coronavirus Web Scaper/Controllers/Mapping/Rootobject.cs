@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace Coronavirus_Web_Scaper.Controllers.Mapping
 {
-	/// <summary>
-	/// Here is my Rootobject that help to map the data betwean the database and my clases that i can work with.
-	/// </summary>
 	public class RootObject
 	{
 		public RootObject()

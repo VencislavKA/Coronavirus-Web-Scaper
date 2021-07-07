@@ -1,8 +1,5 @@
 ﻿namespace Coronavirus_Web_Scaper.Models
 {
-	/// <summary>
-	/// This is a enumeration that has in it all names of the regions that are in Bulgaria
-	/// </summary>
 	public enum NameByEkatte
 	{
 		BLG,
