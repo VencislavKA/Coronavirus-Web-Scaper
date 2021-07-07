@@ -14,7 +14,7 @@ namespace Coronavirus_Web_Scaper.Services
 		{
 			var config = new ConfigurationBuilder()
 				.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-				.AddJsonFile("appsettings.json").Build();
+				.AddJsonFile("appsettings.Development.json").Build();
 			var section = config.GetSection("ConnectionStrings");
 			var client = new MongoClient(section.Value);
 			mongoCollection = client.GetDatabase("Corona").GetCollection<RootObject>("Corona");
