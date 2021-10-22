@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Coronavirus_Web_Scaper
+namespace CoronavirusWebScaper
 {
 	public class Program
 	{

@@ -1,7 +1,7 @@
-﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
+﻿using CoronavirusWebScaper.Controllers.Mapping;
 using MongoDB.Driver;
 
-namespace Coronavirus_Web_Scaper.Services
+namespace CoronavirusWebScaper.Services
 {
 	public interface IMongoService
 	{

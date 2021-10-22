@@ -1,11 +1,11 @@
-using Coronavirus_Web_Scaper.Services;
+using CoronavirusWebScaper.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Coronavirus_Web_Scaper
+namespace CoronavirusWebScaper
 {
 	public class Startup
 	{

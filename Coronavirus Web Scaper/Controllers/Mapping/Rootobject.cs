@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Coronavirus_Web_Scaper.Controllers.Mapping
+namespace CoronavirusWebScaper.Controllers.Mapping
 {
 	public class RootObject
 	{

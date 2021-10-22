@@ -1,4 +1,4 @@
-﻿namespace Coronavirus_Web_Scaper.Models
+﻿namespace CoronavirusWebScaper.Models
 {
 	public enum NameByEkatte
 	{

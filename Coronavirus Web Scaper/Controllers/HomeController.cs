@@ -1,11 +1,11 @@
-﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
-using Coronavirus_Web_Scaper.Services;
+﻿using CoronavirusWebScaper.Controllers.Mapping;
+using CoronavirusWebScaper.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Coronavirus_Web_Scaper.Controllers
+namespace CoronavirusWebScaper.Controllers
 {
 	public class HomeController : Controller
 	{

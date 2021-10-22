@@ -1,9 +1,9 @@
-﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
-using Coronavirus_Web_Scaper.Services;
+﻿using CoronavirusWebScaper.Controllers.Mapping;
+using CoronavirusWebScaper.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace Coronavirus_Web_Scaper.Controllers
+namespace CoronavirusWebScaper.Controllers
 {
 	[Route("api/")]
 	[ApiController]

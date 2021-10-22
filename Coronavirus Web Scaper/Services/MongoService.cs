@@ -1,10 +1,10 @@
-﻿using Coronavirus_Web_Scaper.Controllers.Mapping;
+﻿using CoronavirusWebScaper.Controllers.Mapping;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using System;
 
-namespace Coronavirus_Web_Scaper.Services
+namespace CoronavirusWebScaper.Services
 {
 	public class MongoService : IMongoService
 	{
