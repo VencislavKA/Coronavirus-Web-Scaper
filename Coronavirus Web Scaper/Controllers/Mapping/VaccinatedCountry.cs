@@ -2,12 +2,12 @@
 {
 	public class VaccinatedCountry
 	{
-		public int Total { get; set; }
+		public int TotalVaccinated { get; set; }
 
-		public int Last { get; set; }
+		public int LastVaccinated { get; set; }
 
-		public LastByTypeOfVaccine LastByType { get; set; }
+		public LastVacinatedByTypeOfVaccine LastVaccinatedByType { get; set; }
 
-		public int TotalCompleted { get; set; }
+		public int TotalVaccinesCompleted { get; set; }
 	}
 }

@@ -5,8 +5,8 @@ namespace CoronavirusWebScaper.Services
 {
 	public interface IMongoService
 	{
-		IMongoCollection<RootObject> GetCollection();
+		IMongoCollection<CoronaData> GetAllRecords();
 
-		RootObject GetRootobject();
+		CoronaData GetFirstRecordFromMongoCollection();
 	}
 }

@@ -6,7 +6,7 @@
 
 		public object Last { get; set; }
 
-		public LastByTypeOfVaccine LastByType { get; set; }
+		public LastVacinatedByTypeOfVaccine LastByType { get; set; }
 
 		public int TotalCompleted { get; set; }
 	}

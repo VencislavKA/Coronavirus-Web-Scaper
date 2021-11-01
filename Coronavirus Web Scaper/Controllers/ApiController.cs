@@ -17,15 +17,15 @@ namespace CoronavirusWebScaper.Controllers
 		}
 
 		[HttpGet("data/all")]
-		public ActionResult<RootObject> GetAll()
+		public ActionResult<CoronaData> GetAll()
 		{
-			return MongoService.GetRootobject();
+			return MongoService.GetFirstRecordFromMongoCollection();
 		}
 
 		[HttpGet("data/regions")]
-		public ActionResult<IEnumerable<Region>> GetRegions()
+		public ActionResult<IEnumerable<CasesByRegions>> GetRegions()
 		{
-			return MongoService.GetRootobject().Regions;
+			return MongoService.GetFirstRecordFromMongoCollection().Regions;
 		}
 	}
 }

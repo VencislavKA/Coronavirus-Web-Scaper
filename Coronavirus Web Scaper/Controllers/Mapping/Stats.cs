@@ -4,8 +4,8 @@
 	{
 		public TestedStats Tested { get; set; }
 
-		public ConfirmedStats Confirmed { get; set; }
+		public ConfirmedCasesStats Confirmed { get; set; }
 
-		public ActiveStats Active { get; set; }
+		public ActiveCasesStats Active { get; set; }
 	}
 }

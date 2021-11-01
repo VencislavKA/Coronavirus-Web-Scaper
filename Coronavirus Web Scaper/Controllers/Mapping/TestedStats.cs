@@ -2,8 +2,8 @@
 {
 	public class TestedStats
 	{
-		public TotalByTypeOfTestStats TotalByTypePrc { get; set; }
+		public TotalCasesByTypeOfTestStats TotalCasesByTypeOfTestStats { get; set; }
 
-		public LastByTypeOfTestStats LastByTypePrc { get; set; }
+		public LastCasesByTypeOfTestStats LastCasesByTypeOfTestStats { get; set; }
 	}
 }

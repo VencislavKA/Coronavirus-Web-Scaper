@@ -18,7 +18,7 @@ namespace CoronavirusWebScaper.Controllers
 		
 		public IActionResult Index()
 		{
-			var data = Mongo.GetRootobject();
+			var data = Mongo.GetFirstRecordFromMongoCollection();
 			if (data == null)
 			{
 				return this.Error();
@@ -28,8 +28,8 @@ namespace CoronavirusWebScaper.Controllers
 		
 		public IActionResult RegionData(string name)
 		{
-			var rootobject = Mongo.GetRootobject();
-			var region = rootobject.Regions.Where(x => x.NameByЕkatte == name).FirstOrDefault();
+			var data = Mongo.GetFirstRecordFromMongoCollection();
+			var region = data.Regions.Where(x => x.NameByЕkatte == name).FirstOrDefault();
 			return this.View(region);
 		}
 
