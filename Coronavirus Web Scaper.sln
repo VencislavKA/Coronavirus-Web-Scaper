@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coronavirus Web Scaper", "Coronavirus Web Scaper\Coronavirus Web Scaper.csproj", "{A56DA7F3-E9D6-4171-AB08-68793B1D7C00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoronavirusWebScaper", "Coronavirus Web Scaper\CoronavirusWebScaper.csproj", "{A56DA7F3-E9D6-4171-AB08-68793B1D7C00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

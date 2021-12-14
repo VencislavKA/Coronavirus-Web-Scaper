@@ -1,6 +1,8 @@
 ﻿using CoronavirusWebScaper.Controllers.Mapping;
 using CoronavirusWebScaper.Models;
 using HtmlAgilityPack;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
@@ -17,20 +19,25 @@ namespace CoronavirusWebScaper.Services
 	{
 		private Timer timer;
 
+		private readonly IConfiguration configuration;
+
 		private IMongoService MongoService { get; }
 
-		public UpdateInformationService(IMongoService mongoService)
+		public UpdateInformationService(IMongoService mongoService, IConfiguration config)
 		{
+			configuration = config;
 			MongoService = mongoService;
 		}
 
 		public Task StartAsync(CancellationToken cancellationToken)
 		{
+			int hoursToUpdateNext = int.Parse(configuration.GetSection("UpdateInformationSettings").GetSection("UpdateInformationTimer").Value);
+
 			timer = new Timer(
 			UpdateInformation,
 			null,
 			TimeSpan.Zero,
-			TimeSpan.FromHours(24)
+			TimeSpan.FromHours(hoursToUpdateNext)
 			);
 			return Task.CompletedTask;
 		}
