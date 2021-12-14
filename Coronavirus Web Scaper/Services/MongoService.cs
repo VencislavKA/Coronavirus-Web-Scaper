@@ -8,10 +8,36 @@ namespace CoronavirusWebScaper.Services
 {
 	public class MongoService : IMongoService
 	{
-		private readonly MongoCollection mongo = new();
-		
-		public IMongoCollection<CoronaData> GetAllRecords() => mongo.mongoCollection;
+		private MongoCollection mongo;
 
-		public CoronaData GetFirstRecordFromMongoCollection() => mongo.mongoCollection.AsQueryable().OrderByDescending(x => x.DateScraped).First();
+		public MongoService()
+		{
+			mongo = new();
+		}
+
+		public IMongoCollection<CoronaData> GetAllRecords() 
+		{
+			try{
+				return mongo.mongoCollection;
+			}
+			catch
+			{
+				mongo = new();
+				return mongo.mongoCollection;
+			}
+		}
+
+		public CoronaData GetFirstRecordFromMongoCollection()
+		{
+			try 
+			{
+				return mongo.mongoCollection.AsQueryable().OrderByDescending(x => x.DateScraped).First();
+			}
+			catch
+			{
+				mongo = new();
+				return mongo.mongoCollection.AsQueryable().OrderByDescending(x => x.DateScraped).First();
+			}
+		}
 	}
 }

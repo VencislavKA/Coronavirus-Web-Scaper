@@ -1,10 +1,12 @@
 ﻿using CoronavirusWebScaper.Controllers.Mapping;
 using CoronavirusWebScaper.Models;
 using HtmlAgilityPack;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,7 +41,10 @@ namespace CoronavirusWebScaper.Services
 			return Task.CompletedTask;
 		}
 
-		private void UpdateInformation(object state) => MongoService.GetAllRecords().InsertOne(GetValidatedDataFromSite());
+		private void UpdateInformation(object state) 
+		{
+			MongoService.GetAllRecords().InsertOne(GetValidatedDataFromSite());
+		}
 
 		private static CoronaData GetValidatedDataFromSite()
 		{
@@ -55,8 +60,8 @@ namespace CoronavirusWebScaper.Services
 				{
 					Tested = new TestedCountry()
 					{
-						TotalTested = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[1]/p[1]"),
-						LastTested = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[1]/p[3]"),
+						TotalTested = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[1]/p[1]"),
+						LastTested = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[1]/p[3]"),
 						TotalByType = new TotalCasesByTypeOfTest()
 						{
 							Pcr = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[1]/table[2]/tbody/tr[1]/td[2]"),
@@ -70,8 +75,8 @@ namespace CoronavirusWebScaper.Services
 					},
 					Confirmed = new ConfirmedCasesInCountry()
 					{
-						TotalCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[2]/p[1]"),
-						LastCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[1]/h1"),
+						TotalCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[2]/p[1]"),
+						LastCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[4]/div[1]/h1"),
 						CasesInMedicine = new()
 						{
 							Total = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[3]/table/tbody/tr[6]/td[2]"),
@@ -98,28 +103,28 @@ namespace CoronavirusWebScaper.Services
 					},
 					ActiveCases = new()
 					{
-						CurrentCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[2]/p[3]"),
+						CurrentCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[2]/p[3]"),
 						CurrentCasesByType = new CurrentCasesByType()
 						{
-							HospitalizedCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[4]/p[1]"),
-							IntensiceCareCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[4]/p[3]")
+							HospitalizedCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[4]/p[1]"),
+							IntensiceCareCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[4]/p[3]")
 						}
 					},
 					Recovered = new RecoveredPatientCountry()
 					{
-						TotalRecovered = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[3]/p[1]"),
-						LastRecovered = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[3]/p[3]")
+						TotalRecovered = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[3]/p[1]"),
+						LastRecovered = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[3]/p[3]")
 					},
 					Deceased = new DeceasedCasesInCountry()
 					{
-						TotalCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[5]/p[1]"),
-						LastCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[5]/p[3]")
+						TotalCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[5]/p[1]"),
+						LastCases = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[5]/p[3]")
 					},
 					Vaccinated = new VaccinatedCountry()
 					{
-						TotalVaccinated = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[6]/p[1]"),
+						TotalVaccinated = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[6]/p[1]"),
 						TotalVaccinesCompleted= ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[7]"),
-						LastVaccinated = ValidateNumber(doc, "/html/body/main/div[1]/div/div[6]/div[6]/p[3]"),
+						LastVaccinated = ValidateNumber(doc, "/html/body/main/div[1]/div/div[5]/div[6]/p[3]"),
 						LastVaccinatedByType = new LastVacinatedByTypeOfVaccine()
 						{
 							Astrazeneca = ValidateNumber(doc2, "/html/body/main/div[3]/div/div[1]/div[4]/table/tbody/tr[29]/td[5]"),
